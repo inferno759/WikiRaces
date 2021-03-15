@@ -2,6 +2,15 @@
 * Trevor Dunbar, Brandon Faulkenberry, Caleb Owens
 */
 
+/*
+
+DROP TABLE Friends;
+DROP TABLE PathStep;
+DROP TABLE Leaderboard;
+DROP TABLE Races;
+DROP TABLE Users;
+
+*/
 CREATE TABLE Users (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Username nvarchar(25) NOT NULL,
