@@ -14,14 +14,14 @@ DROP TABLE Users;
 
 CREATE TABLE Users (
 	ID int IDENTITY(1,1) PRIMARY KEY,
-	Username nvarchar(25) NOT NULL,
+	Username nvarchar(25) NOT NULL UNIQUE,
 	Password nvarchar(25) NOT NULL,
 );
 
 CREATE TABLE Races (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	AuthorID int,
-	Title nvarchar(100),
+	Title nvarchar(100) UNIQUE,
 	Type nvarchar(50),
 	TimeLimit float,
 	StepLimit int,
