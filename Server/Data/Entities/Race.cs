@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Dal
+namespace Data.Entities
 {
     public partial class Race
     {
         public Race()
         {
-            Leaderboards = new HashSet<Leaderboard>();
+            LeaderboardLines = new HashSet<LeaderboardLine>();
         }
 
         public int Id { get; set; }
@@ -22,6 +22,6 @@ namespace Dal
         public string EndPage { get; set; }
 
         public virtual User Author { get; set; }
-        public virtual ICollection<Leaderboard> Leaderboards { get; set; }
+        public virtual ICollection<LeaderboardLine> LeaderboardLines { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Dal
+namespace Data.Entities
 {
     public partial class User
     {
@@ -11,7 +11,7 @@ namespace Dal
         {
             FriendFriendNavigations = new HashSet<Friend>();
             FriendUsers = new HashSet<Friend>();
-            Leaderboards = new HashSet<Leaderboard>();
+            LeaderboardLines = new HashSet<LeaderboardLine>();
             Races = new HashSet<Race>();
         }
 
@@ -21,7 +21,7 @@ namespace Dal
 
         public virtual ICollection<Friend> FriendFriendNavigations { get; set; }
         public virtual ICollection<Friend> FriendUsers { get; set; }
-        public virtual ICollection<Leaderboard> Leaderboards { get; set; }
+        public virtual ICollection<LeaderboardLine> LeaderboardLines { get; set; }
         public virtual ICollection<Race> Races { get; set; }
     }
 }

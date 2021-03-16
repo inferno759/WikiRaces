@@ -6,7 +6,7 @@
 
 DROP TABLE Friends;
 DROP TABLE PathStep;
-DROP TABLE Leaderboard;
+DROP TABLE LeaderboardLines;
 DROP TABLE Races;
 DROP TABLE Users;
 
@@ -30,7 +30,7 @@ CREATE TABLE Races (
 	CONSTRAINT FK_Races_AuthorId FOREIGN KEY (AuthorId) REFERENCES Users
 );
 
-CREATE TABLE Leaderboard (
+CREATE TABLE LeaderboardLines (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	RaceID int,
 	UserID int,
@@ -48,7 +48,7 @@ CREATE TABLE PathStep (
 	CurrentPage varchar(1000),
 	StepNumber int,
 	TimeSpent float,
-	CONSTRAINT FK_PathStep_Leaderboard FOREIGN KEY (LeaderboardID) REFERENCES Leaderboard
+	CONSTRAINT FK_PathStep_Leaderboard FOREIGN KEY (LeaderboardID) REFERENCES LeaderboardLines
 );
 
 CREATE TABLE Friends (

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Dal
+namespace Data.Entities
 {
     public partial class PathStep
     {
@@ -13,6 +13,6 @@ namespace Dal
         public int? StepNumber { get; set; }
         public double? TimeSpent { get; set; }
 
-        public virtual Leaderboard Leaderboard { get; set; }
+        public virtual LeaderboardLine Leaderboard { get; set; }
     }
 }

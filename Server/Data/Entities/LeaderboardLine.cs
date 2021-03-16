@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Dal
+namespace Data.Entities
 {
-    public partial class Leaderboard
+    public partial class LeaderboardLine
     {
-        public Leaderboard()
+        public LeaderboardLine()
         {
             PathSteps = new HashSet<PathStep>();
         }

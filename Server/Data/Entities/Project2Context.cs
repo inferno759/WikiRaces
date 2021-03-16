@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace Dal
+namespace Data.Entities
 {
     public partial class Project2Context : DbContext
     {
@@ -18,7 +18,7 @@ namespace Dal
         }
 
         public virtual DbSet<Friend> Friends { get; set; }
-        public virtual DbSet<Leaderboard> Leaderboards { get; set; }
+        public virtual DbSet<LeaderboardLine> LeaderboardLines { get; set; }
         public virtual DbSet<PathStep> PathSteps { get; set; }
         public virtual DbSet<Race> Races { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -38,18 +38,16 @@ namespace Dal
                 entity.HasOne(d => d.FriendNavigation)
                     .WithMany(p => p.FriendFriendNavigations)
                     .HasForeignKey(d => d.FriendId)
-                    .HasConstraintName("FK__Friends__FriendI__6E01572D");
+                    .HasConstraintName("FK_Friends_Friend");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.FriendUsers)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Friends__UserID__6D0D32F4");
+                    .HasConstraintName("FK_Friends_User");
             });
 
-            modelBuilder.Entity<Leaderboard>(entity =>
+            modelBuilder.Entity<LeaderboardLine>(entity =>
             {
-                entity.ToTable("Leaderboard");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CompletionDate).HasColumnType("datetime");
@@ -59,14 +57,14 @@ namespace Dal
                 entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.HasOne(d => d.Race)
-                    .WithMany(p => p.Leaderboards)
+                    .WithMany(p => p.LeaderboardLines)
                     .HasForeignKey(d => d.RaceId)
-                    .HasConstraintName("FK__Leaderboa__RaceI__66603565");
+                    .HasConstraintName("FK_Leaderboard_Races");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Leaderboards)
+                    .WithMany(p => p.LeaderboardLines)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Leaderboa__UserI__6754599E");
+                    .HasConstraintName("FK_Leaderboard_Users");
             });
 
             modelBuilder.Entity<PathStep>(entity =>
@@ -84,11 +82,14 @@ namespace Dal
                 entity.HasOne(d => d.Leaderboard)
                     .WithMany(p => p.PathSteps)
                     .HasForeignKey(d => d.LeaderboardId)
-                    .HasConstraintName("FK__PathStep__Leader__6A30C649");
+                    .HasConstraintName("FK_PathStep_Leaderboard");
             });
 
             modelBuilder.Entity<Race>(entity =>
             {
+                entity.HasIndex(e => e.Title, "UQ__Races__2CB664DC65B01FEA")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.AuthorId).HasColumnName("AuthorID");
@@ -108,12 +109,14 @@ namespace Dal
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Races)
                     .HasForeignKey(d => d.AuthorId)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Races__AuthorID__5EBF139D");
+                    .HasConstraintName("FK_Races_AuthorId");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasIndex(e => e.Username, "UQ__Users__536C85E48C0116FE")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Password)
