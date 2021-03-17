@@ -4,7 +4,7 @@ using Library;
 using Library.Model;
 
 
-namespace Tests
+namespace Test
 {
     public class UserTest
     {
