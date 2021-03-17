@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Library;
+using Library.Model;
 
 
 namespace Tests
@@ -11,7 +12,7 @@ namespace Tests
         public void UserConstructedPassed()
         {
 
-            User user = new User(15, "myusername", "mypassword");
+            User user = new User();
 
             Assert.NotNull(user);
         }
