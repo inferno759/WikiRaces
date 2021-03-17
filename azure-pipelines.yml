@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/Server.sln'
+  solution: '**/Server/Server.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
