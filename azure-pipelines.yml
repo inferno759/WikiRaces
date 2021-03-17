@@ -40,12 +40,14 @@ steps:
   displayName: Build
   inputs:
     command: 'build'
+    workingDirectory: 'Server'
     arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration $(buildConfiguration)
 
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
     command: test
+    workingDirectory: 'Server'
     arguments: '--configuration $(buildConfiguration) --collect "xplat code coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover'
     publishTestResults: true
 
