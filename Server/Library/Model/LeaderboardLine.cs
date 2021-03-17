@@ -12,6 +12,25 @@ namespace Library.Model
         private int _score;
         private float _timeElapsed;
         private int _stepsTaken;
+
+        public LeaderboardLine()
+        {
+
+        }
+
+        public LeaderboardLine(int id, int score, float timeElapsed, int stepsTaken,
+            DateTime leaderBoardDateTime, List<PathStep> paths)
+        {
+            Id = id;
+            Score = score;
+            TimeElapsed = timeElapsed;
+            StepsTaken = stepsTaken;
+            LeaderboardDateTime = leaderBoardDateTime;
+            Path = paths;
+
+        }
+
+
         public int Id { get; set; }
 
         // race ID foreign key done at Repo add
@@ -23,9 +42,9 @@ namespace Library.Model
             get { return _score; }
             set
             {
-                if(value <= 0)
+                if(value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Score shouldn't be negative or 0");
+                    throw new ArgumentOutOfRangeException("Score shouldn't be negative");
                 }
                 else
                 {
@@ -64,6 +83,8 @@ namespace Library.Model
             }
         }
         public DateTime LeaderboardDateTime { get; set; }
+
+        public List<PathStep> Path { get; set; }
 
 
 
