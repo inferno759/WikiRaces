@@ -27,15 +27,6 @@ namespace Test
                 TimeSpent = 5, 
                 StepNumber = 3
             });
-            List<PathStep> testPaths = new List<PathStep>();
-            testPaths.Add(new PathStep()
-            {
-                CurrentPage = "https://en.wikipedia.org/wiki/O_Captain!_My_Captain!",
-                TimeSpent = 5,
-                StepNumber = 3
-            });
-
-            DateTime testDate1 = new DateTime(2021, 10, 31, 14, 5, 20);
 
             LeaderboardLine leaderboardLine = new LeaderboardLine(id, score, timeElapsed,
                 stepsTaken, leaderboardDateTime, paths);
@@ -44,9 +35,8 @@ namespace Test
             Assert.Equal(5, leaderboardLine.Score);
             Assert.Equal(10, leaderboardLine.TimeElapsed);
             Assert.Equal(6, leaderboardLine.StepsTaken);
-            Assert.Equal(testDate1, leaderboardLine.LeaderboardDateTime);
-            Assert.Equal(testPaths[0], leaderboardLine.Path[0]);
-
+            Assert.Equal(leaderboardDateTime, leaderboardLine.LeaderboardDateTime);
+            Assert.Equal(paths[0], leaderboardLine.Path[0]);
         }
 
         [Fact]
