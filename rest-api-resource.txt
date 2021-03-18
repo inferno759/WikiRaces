@@ -1,0 +1,18 @@
+/api/user
+    GET: get paginated users list
+    POST: create a new user
+    PUT: perform user login
+
+    /api/user/:id
+        GET: get user matching url
+        
+        /api/user/:id/friends
+            GET: get paginated friends list
+            PUT: add friend to friends list
+
+/api/race
+    GET: get paginated races list
+    POST: create a new race
+
+    /api/race/:id
+        GET: get race matching url
