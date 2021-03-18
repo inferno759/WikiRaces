@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories
 {
-    class RaceRepository : IRaceRepository
+    public class RaceRepository : IRaceRepository
     {
         private readonly Entities.Project2Context _context;
 
