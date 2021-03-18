@@ -11,9 +11,9 @@ namespace Library.Interfaces
     {
         Task<User> GetUserByID(int id);
         Task<User> GetUserByUsername(string username);
-        Task<IEnumerable<User>> GetUsers();
+        Task<List<User>> GetAllUsers();
         Task AddUser(User user);
         Task UpdateUser(User user);
-        Task DeleteUser(User user);
+        //Task DeleteUser(User user);
     }
 }
