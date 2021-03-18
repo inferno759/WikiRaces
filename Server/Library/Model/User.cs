@@ -59,7 +59,7 @@ namespace Library.Model
                 _password = value;
             }
         }
-        public List<User> Friends { get; set; }
+        public List<int?> Friends { get; set; }
 
         public User()
         {
@@ -71,25 +71,25 @@ namespace Library.Model
             Id = id;
             Username = username;
             Password = password;
-            Friends = new List<User>();
+            Friends = new List<int?>();
         }
 
         public void AddFriend(User friend)
         {
-            if (Friends.Contains(friend))
+            if (Friends.Contains(friend.Id))
             {
                 throw new ArgumentException("Friend to add already exists");
             }
-            Friends.Add(friend);
+            Friends.Add(friend.Id);
         }
 
         public void DeleteFriend(User friend)
         {
-            if (!Friends.Contains(friend))
+            if (!Friends.Contains(friend.Id))
             {
                 throw new ArgumentException("Friend to delete doesn't exist");
             }
-            Friends.Remove(friend);
+            Friends.Remove(friend.Id);
         }
     }
 }
