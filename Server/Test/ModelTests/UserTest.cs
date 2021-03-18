@@ -96,7 +96,7 @@ namespace Test
             User friend = new User(friendId, friendUsername, friendPassword);
             user.AddFriend(friend);
 
-            Assert.Contains<User>(friend, user.Friends);
+            Assert.Contains<int?>(friend.Id, user.Friends);
         }
 
         [Fact]
@@ -131,7 +131,7 @@ namespace Test
             user.AddFriend(friend);
             user.DeleteFriend(friend);
 
-            Assert.DoesNotContain<User>(friend, user.Friends);
+            Assert.DoesNotContain<int?>(friend.Id, user.Friends);
         }
 
         [Fact]
