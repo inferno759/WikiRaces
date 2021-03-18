@@ -29,41 +29,74 @@ namespace Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteUser(User user)
+        /*public async Task DeleteUser(User user)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public async Task<User> GetUserByID(int id)
         {
-            var query = await _context.Users
-                .Include(f => f.FriendFriendNavigations)
-                .FirstAsync(x => x.Id == id);
-            if(query != null)
+            Entities.User query;
+            try
             {
-                User user = new User
-                {
-                    Id = query.Id,
-                    Username = query.Username,
-                    Password = query.Password,
-                    Friends = query.FriendFriendNavigations.Select(x => x.FriendId).ToList()
-                };
-                return user;
+                query = await _context.Users
+                .Include(f => f.FriendUsers)
+                .FirstAsync(x => x.Id == id);
             }
-            else
+            catch
             {
                 throw new ArgumentException("Could not find user with that ID");
             }
+            User user = new User
+            {
+                Id = query.Id,
+                Username = query.Username,
+                Password = query.Password,
+                Friends = query.FriendUsers.Select(x => x.FriendId).ToList()
+            };
+            return user;
         }
 
         public async Task<User> GetUserByUsername(string username)
         {
-            throw new NotImplementedException();
+            Entities.User query;
+            try
+            {
+                query = await _context.Users
+                .Include(f => f.FriendUsers)
+                .FirstAsync(x => x.Username == username);
+            }
+            catch
+            {
+                throw new ArgumentException("Could not find user with that username");
+            }
+            User user = new User
+            {
+                Id = query.Id,
+                Username = query.Username,
+                Password = query.Password,
+                Friends = query.FriendUsers.Select(x => x.FriendId).ToList()
+            };
+            return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<List<User>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            var query = await _context.Users
+                .Include(f => f.FriendUsers)
+                .ToListAsync();
+            foreach(var user in query)
+            {
+                users.Add(new User
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Password = user.Password,
+                    Friends = user.FriendUsers.Select(x => x.FriendId).ToList()
+                });
+            }
+            return users;
         }
 
         /// <summary>
@@ -73,7 +106,24 @@ namespace Data.Repositories
         /// <returns></returns>
         public async Task UpdateUser(User user)
         {
-            
+            var query = await _context.Users
+                .Include(f => f.FriendUsers)
+                .FirstAsync(x => x.Id == user.Id);
+            if (query != null)
+            {
+                query.Username = user.Username;
+                query.Password = user.Password;
+                query.FriendUsers = user.Friends.Select(x => new Entities.Friend
+                {
+                    UserId = user.Id,
+                    FriendId = x
+                }).ToList();
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new ArgumentException("Couldn't find user to update");
+            }
         }
     }
 }
