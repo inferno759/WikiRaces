@@ -78,17 +78,88 @@ namespace Data.Repositories
 
         public async Task<List<LeaderboardLine>> GetLeaderboardLines()
         {
-            throw new NotImplementedException();
+            List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
+            var query = await _context.LeaderboardLines
+                .Include(l => l.PathSteps)
+                .ToListAsync();
+            foreach (var leaderboardLine in query)
+            {
+                leaderboardLines.Add(new LeaderboardLine
+                {
+                    Id = leaderboardLine.Id,
+                    RaceId = leaderboardLine.RaceId,
+                    UserId = leaderboardLine.UserId,
+                    Score = leaderboardLine.Score,
+                    TimeElapsed = (float)leaderboardLine.TimeElapsed,
+                    StepsTaken = leaderboardLine.StepsTaken,
+                    LeaderboardDateTime = leaderboardLine.CompletionDate,
+                    Path = leaderboardLine.PathSteps.Select(ps => new PathStep
+                    {
+                        CurrentPage = ps.CurrentPage,
+                        StepNumber = ps.StepNumber,
+                        TimeSpent = (float)ps.TimeSpent
+                    }).ToList()
+                });
+            }
+            return leaderboardLines;
         }
 
         public async Task<List<LeaderboardLine>> GetLeaderboardLinesByRace(Race race)
         {
-            throw new NotImplementedException();
+            List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
+            var query = await _context.LeaderboardLines
+                .Include(l => l.PathSteps)
+                .Where(x => x.RaceId == race.Id)
+                .ToListAsync();
+            foreach (var leaderboardLine in query)
+            {
+                leaderboardLines.Add(new LeaderboardLine
+                {
+                    Id = leaderboardLine.Id,
+                    RaceId = leaderboardLine.RaceId,
+                    UserId = leaderboardLine.UserId,
+                    Score = leaderboardLine.Score,
+                    TimeElapsed = (float)leaderboardLine.TimeElapsed,
+                    StepsTaken = leaderboardLine.StepsTaken,
+                    LeaderboardDateTime = leaderboardLine.CompletionDate,
+                    Path = leaderboardLine.PathSteps.Select(ps => new PathStep
+                    {
+                        CurrentPage = ps.CurrentPage,
+                        StepNumber = ps.StepNumber,
+                        TimeSpent = (float)ps.TimeSpent
+                    }).ToList()
+                });
+            }
+            return leaderboardLines;
         }
 
         public async Task<List<LeaderboardLine>> GetLeaderboardLinesByUser(User user)
         {
-            throw new NotImplementedException();
+            List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
+            var query = await _context.LeaderboardLines
+                .Include(l => l.PathSteps)
+                .Where(x => x.UserId == user.Id)
+                .ToListAsync();
+            foreach (var leaderboardLine in query)
+            {
+                leaderboardLines.Add(new LeaderboardLine
+                {
+                    Id = leaderboardLine.Id,
+                    RaceId = leaderboardLine.RaceId,
+                    UserId = leaderboardLine.UserId,
+                    Score = leaderboardLine.Score,
+                    TimeElapsed = (float)leaderboardLine.TimeElapsed,
+                    StepsTaken = leaderboardLine.StepsTaken,
+                    LeaderboardDateTime = leaderboardLine.CompletionDate,
+                    Path = leaderboardLine.PathSteps.Select(ps => new PathStep
+                    {
+                        CurrentPage = ps.CurrentPage,
+                        StepNumber = ps.StepNumber,
+                        TimeSpent = (float)ps.TimeSpent
+                    }).ToList()
+                });
+            }
+            return leaderboardLines;
         }
 
         public async Task UpdateLeaderBoardLine(LeaderboardLine leaderboardLine)
