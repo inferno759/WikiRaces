@@ -18,8 +18,10 @@ namespace Test.RepositoryTests
             using var contextFactory = new WikiRaceContextFactory();
             using var context = contextFactory.CreateContext();
 
+            User author = new User(1, "Caleb", "Password");
+
             int id = 1;
-            int authorId = 2;
+            int authorId = 1;
             string title = "My Race";
             string type = "Timed";
             float timeLimit = 1000;
@@ -28,7 +30,9 @@ namespace Test.RepositoryTests
             string end = "https://en.wikipedia.org/wiki/Russia";
 
             Race insertedRace = new Race(id, authorId, title, type, timeLimit, stepLimit, start, end );
-            
+
+            var userRepo = new UserRepository(context);
+            await userRepo.AddUser(author);
             var repo = new RaceRepository(context);
 
             // act
