@@ -16,7 +16,6 @@ namespace App.Controllers
     [ApiController]
     public class RaceController : ControllerBase
     {
-
         private readonly IRaceRepository _raceRepository;
 
         public RaceController(IRaceRepository raceRepository)
@@ -25,12 +24,11 @@ namespace App.Controllers
         }
 
 
-
-        // GET: api/<ValuesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("api/race")]
+        public async Task<IActionResult> ControllerGetAllRaces()
         {
-            return new string[] { "value1", "value2" };
+            var races = await _raceRepository.GetRaces();
+            return Ok(races);
         }
 
         // GET api/<ValuesController>/5
@@ -40,10 +38,11 @@ namespace App.Controllers
             return "value";
         }
 
-        // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("api/race")]
+        public async Task<IActionResult> ControllerAddRace([Required] Library.Model.Race race)
         {
+            await _raceRepository.AddRace(race);
+            return Ok();
         }
 
         // PUT api/<ValuesController>/5
