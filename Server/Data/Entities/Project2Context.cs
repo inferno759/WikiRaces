@@ -59,11 +59,13 @@ namespace Data.Entities
                 entity.HasOne(d => d.Race)
                     .WithMany(p => p.LeaderboardLines)
                     .HasForeignKey(d => d.RaceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Leaderboard_Races");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.LeaderboardLines)
                     .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Leaderboard_Users");
             });
 
@@ -74,6 +76,7 @@ namespace Data.Entities
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CurrentPage)
+                    .IsRequired()
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 
@@ -82,12 +85,13 @@ namespace Data.Entities
                 entity.HasOne(d => d.Leaderboard)
                     .WithMany(p => p.PathSteps)
                     .HasForeignKey(d => d.LeaderboardId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PathStep_Leaderboard");
             });
 
             modelBuilder.Entity<Race>(entity =>
             {
-                entity.HasIndex(e => e.Title, "UQ__Races__2CB664DC65B01FEA")
+                entity.HasIndex(e => e.Title, "UQ__Races__2CB664DCF35117B0")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -95,26 +99,33 @@ namespace Data.Entities
                 entity.Property(e => e.AuthorId).HasColumnName("AuthorID");
 
                 entity.Property(e => e.EndPage)
+                    .IsRequired()
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 
                 entity.Property(e => e.StartPage)
+                    .IsRequired()
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Title).HasMaxLength(100);
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-                entity.Property(e => e.Type).HasMaxLength(50);
+                entity.Property(e => e.Type)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Races)
                     .HasForeignKey(d => d.AuthorId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Races_AuthorId");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Username, "UQ__Users__536C85E48C0116FE")
+                entity.HasIndex(e => e.Username, "UQ__Users__536C85E45817B25A")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");

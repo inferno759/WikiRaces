@@ -13,12 +13,12 @@ namespace Data.Entities
         }
 
         public int Id { get; set; }
-        public int? RaceId { get; set; }
-        public int? UserId { get; set; }
-        public int? Score { get; set; }
-        public double? TimeElapsed { get; set; }
-        public int? StepsTaken { get; set; }
-        public DateTime? CompletionDate { get; set; }
+        public int RaceId { get; set; }
+        public int UserId { get; set; }
+        public int Score { get; set; }
+        public double TimeElapsed { get; set; }
+        public int StepsTaken { get; set; }
+        public DateTime CompletionDate { get; set; }
 
         public virtual Race Race { get; set; }
         public virtual User User { get; set; }

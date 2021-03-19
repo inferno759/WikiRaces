@@ -15,6 +15,8 @@ namespace Test
         public void LeaderBoardLineConstructorPassed()
         {
             int id = 1;
+            int raceID = 2;
+            int userID = 4;
             int score = 5;
             float timeElapsed = 10;
             int stepsTaken = 6;
@@ -28,10 +30,12 @@ namespace Test
                 StepNumber = 3
             });
 
-            LeaderboardLine leaderboardLine = new LeaderboardLine(id, score, timeElapsed,
+            LeaderboardLine leaderboardLine = new LeaderboardLine(id, raceID, userID, score, timeElapsed,
                 stepsTaken, leaderboardDateTime, paths);
 
             Assert.Equal(1, leaderboardLine.Id);
+            Assert.Equal(2, leaderboardLine.RaceId);
+            Assert.Equal(4, leaderboardLine.UserId);
             Assert.Equal(5, leaderboardLine.Score);
             Assert.Equal(10, leaderboardLine.TimeElapsed);
             Assert.Equal(6, leaderboardLine.StepsTaken);
