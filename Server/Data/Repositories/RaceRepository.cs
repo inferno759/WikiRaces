@@ -41,9 +41,28 @@ namespace Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Race> GetRaceByID(int id)
+        public async Task<Race> GetRaceByID(int id)
         {
-            throw new NotImplementedException();
+            Entities.Race query;
+            try
+            {
+                query = await _context.Races.FindAsync(id);
+            }
+            catch
+            {
+                throw new ArgumentException("Couldn't find race with that ID");
+            }
+            return new Race
+            {
+                Id = query.Id,
+                AuthorId = query.AuthorId,
+                RaceTitle = query.Title,
+                RaceType = query.Type,
+                TimeLimit = (float)query.TimeLimit,
+                StepLimit = query.StepLimit,
+                StartPage = query.StartPage,
+                EndPage = query.EndPage
+            };
         }
 
         public async Task<List<Race>> GetRaces()
@@ -76,9 +95,25 @@ namespace Data.Repositories
         }
         
 
-        public Task<IEnumerable<Race>> GetRacesByTitle(string title)
+        public async Task<List<Race>> GetRacesByTitle(string title)
         {
-            throw new NotImplementedException();
+            List<Race> races = new List<Race>();
+            var query = await _context.Races.Where(race => race.Title.Contains(title)).ToListAsync();
+            foreach(var race in query)
+            {
+                races.Add(new Race
+                {
+                    Id = race.Id,
+                    RaceTitle = race.Title,
+                    RaceType = race.Type,
+                    TimeLimit = (float)race.TimeLimit,
+                    StepLimit = race.StepLimit,
+                    StartPage = race.StartPage,
+                    EndPage = race.EndPage,
+                    AuthorId = race.AuthorId
+                });
+            }
+            return races;
         }
 
         public Task UpdateRace(Race race)

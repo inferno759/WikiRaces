@@ -13,7 +13,7 @@ namespace Library.Interfaces
         Task AddRace(Race race);
         Task<Race> GetRaceByID(int id);
         Task<List<Race>> GetRaces();
-        Task<IEnumerable<Race>> GetRacesByTitle(string title);
+        Task<List<Race>> GetRacesByTitle(string title);
         Task UpdateRace(Race race);
         Task DeleteRace(Race race);
     }
