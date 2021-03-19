@@ -1,1 +1,7 @@
-<p>races works!</p>
+<div>
+    <ul class="races">
+        <li *ngFor="let race of races">
+          <span class="badge">{{race.id}}</span> {{race.raceTitle}}
+        </li>
+    </ul>
+</div>

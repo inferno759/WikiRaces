@@ -39,7 +39,7 @@ namespace Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteLeaderBoardLine(LeaderboardLine leaderboardLine)
+        public Task DeleteLeaderBoardLine(LeaderboardLine leaderboardLine)
         {
             throw new NotImplementedException();
         }
@@ -162,7 +162,7 @@ namespace Data.Repositories
             return leaderboardLines;
         }
 
-        public async Task UpdateLeaderBoardLine(LeaderboardLine leaderboardLine)
+        public Task UpdateLeaderBoardLine(LeaderboardLine leaderboardLine)
         {
             throw new NotImplementedException();
         }
