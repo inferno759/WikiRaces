@@ -11,6 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Data;
+using Data.Entities;
+using Library;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace WikiRacing
 {
@@ -26,6 +34,21 @@ namespace WikiRacing
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("Project2");
+
+            services.AddDbContext<Project2Context>(options =>
+            {
+                options.UseSqlServer(connectionString);
+
+            });
+
+            // add Services.Addscoped here
+
+            // AddCors(options => options.AddDefaultPolicy(config => config
+            //  .WithOrigins("http://localhost:4200")
+            //  .AllowAnyMethod()
+            //  .AllowANyHeader()
+            //  .AllowCredentials()));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -44,10 +67,19 @@ namespace WikiRacing
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WikiRacing v1"));
             }
 
+            app.UseStatusCodePages();
+
             app.UseHttpsRedirection();
 
+            /* change index.html to the mainpage
+              
+            app.UseRewriter(new RewriteOptions()
+                .AddRedirect("^$", "index.html"));
+            */
+            app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
