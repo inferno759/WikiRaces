@@ -18,7 +18,8 @@ using Library;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 
-
+using Library.Interfaces;
+using Data.Repositories;
 
 namespace WikiRacing
 {
@@ -42,7 +43,7 @@ namespace WikiRacing
 
             });
 
-            // add Services.Addscoped here
+            services.AddScoped<IRaceRepository, RaceRepository>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
              .WithOrigins("http://localhost:4200")

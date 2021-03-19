@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
 
   getRaces(): void {
     this.raceService.getRaces()
-      .subscribe(races => this.races = races.slice(1, 5));
+      .subscribe(races => this.races = races.slice(0, 1));
+      
   }
 
 }
