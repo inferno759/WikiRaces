@@ -42,14 +42,15 @@ namespace WikiRacing
 
             });
 
-            // add Services.Addscoped here
+            services.AddScoped<Library.Interfaces.IRaceRepository, Data.Repositories.RaceRepository>();
+            services.AddScoped<Library.Interfaces.IUserRepository, Data.Repositories.UserRepository>();
+            services.AddScoped<Library.Interfaces.ILeaderBoardLineRepository, Data.Repositories.LeaderboardLineRepository>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
              .WithOrigins("http://localhost:4200")
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
