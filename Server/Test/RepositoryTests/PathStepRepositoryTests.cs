@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Test.RepositoryTests
 {
-    public class PathStepRepositoryTests
+    /*public class PathStepRepositoryTests
     {
         [Fact]
         public async Task PathStepRepoAddPathStep()
@@ -32,7 +32,7 @@ namespace Test.RepositoryTests
             Assert.Equal(insertedPath.TimeSpent, compare.TimeSpent);
             Assert.Equal(insertedPath.StepNumber, compare.StepNumber);
         }
-    }
+    }*/
 }
 
 
