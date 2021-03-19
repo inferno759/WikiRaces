@@ -18,10 +18,12 @@ namespace Library.Model
 
         }
 
-        public LeaderboardLine(int id, int score, float timeElapsed, int stepsTaken,
+        public LeaderboardLine(int id, int raceId, int userId, int score, float timeElapsed, int stepsTaken,
             DateTime leaderBoardDateTime, List<PathStep> paths)
         {
             Id = id;
+            RaceId = raceId;
+            UserId = userId;
             Score = score;
             TimeElapsed = timeElapsed;
             StepsTaken = stepsTaken;
@@ -33,9 +35,9 @@ namespace Library.Model
 
         public int Id { get; set; }
 
-        // race ID foreign key done at Repo add
+        public int RaceId { get; set; }
 
-        // user ID foreign key done at Repo add
+        public int UserId { get; set; }
 
         public int Score
         {
