@@ -25,26 +25,35 @@ namespace App.Controllers
         }
 
 
-        // GET: api/<ValuesController1>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("api/leaderboard")]
+        public async Task<IActionResult> ControllerGetAllLeaderboardLines()
         {
-            return new string[] { "value1", "value2" };
+            var leaderboardLines = await _leaderboardLineRepository.GetLeaderboardLines();
+            return Ok(leaderboardLines);
         }
 
-        // GET api/<ValuesController1>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("api/leaderboard/{user}")]
+        public async Task<IActionResult> ControllerGetLeaderboardLineByUser(User user)
         {
-            return "value";
+            var leaderboardLines = await _leaderboardLineRepository.GetLeaderboardLinesByUser(user);
+            return Ok(leaderboardLines);
         }
 
-        // POST api/<ValuesController1>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("api/leaderboard/{race}")]
+        public async Task<IActionResult> ControllerGetLeaderboardLineByRace(Race race)
         {
+            var leaderboardLines = await _leaderboardLineRepository.GetLeaderboardLinesByRace(race);
+            return Ok(leaderboardLines);
         }
 
+        [HttpPost("api/leaderboard")]
+        public async Task<IActionResult> ControllerAddLeaderboardLine([Required] LeaderboardLine leaderboardLine)
+        {
+            await _leaderboardLineRepository.AddLeaderboardLine(leaderboardLine);
+            return Ok();
+        }
+
+        /*
         // PUT api/<ValuesController1>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -56,5 +65,7 @@ namespace App.Controllers
         public void Delete(int id)
         {
         }
+        */
+
     }
 }
