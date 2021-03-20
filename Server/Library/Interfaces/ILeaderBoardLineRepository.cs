@@ -12,8 +12,8 @@ namespace Library.Interfaces
         Task AddLeaderboardLine(LeaderboardLine leaderboardLine);
         Task<LeaderboardLine> GetLeaderboardLineByID(int id);
         Task<List<LeaderboardLine>> GetLeaderboardLines();
-        Task<List<LeaderboardLine>> GetLeaderboardLinesByUser(User user);
-        Task<List<LeaderboardLine>> GetLeaderboardLinesByRace(Race race);
+        Task<List<LeaderboardLine>> GetLeaderboardLinesByUser(int userId);
+        Task<List<LeaderboardLine>> GetLeaderboardLinesByRace(int raceId);
         Task UpdateLeaderBoardLine(LeaderboardLine leaderboardLine);
         Task DeleteLeaderBoardLine(LeaderboardLine leaderboardLine);
     }

@@ -28,6 +28,15 @@ export class RaceService {
       );
   }
 
+  getRace(id: number): Observable<Race> {
+    const url = `${this.racesUrl}/${id}`;
+    return this.http.get<Race>(url)
+      .pipe(
+        tap(_ => this.log(`fetched race with id ${id}`)),
+        catchError(this.handleError<Race>(`getRace id=${id}`))
+      );
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.

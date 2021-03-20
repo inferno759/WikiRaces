@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RacesComponent } from './races/races.component';
+import { RaceDetailComponent } from './race-detail/race-detail.component';
 
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'races', component: RacesComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'detail/:id', component: RaceDetailComponent },
 ];
 
 @NgModule({
