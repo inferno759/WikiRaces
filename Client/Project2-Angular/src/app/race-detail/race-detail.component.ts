@@ -30,7 +30,7 @@ export class RaceDetailComponent implements OnInit {
 
   getRace(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.raceService.getRace(id)
+    this.raceService.getRaceById(id)
       .subscribe(race => this.race = race);
   }
 

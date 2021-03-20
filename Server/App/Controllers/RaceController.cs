@@ -31,14 +31,14 @@ namespace App.Controllers
             return Ok(races);
         }
 
-        [HttpGet("api/race/{id}")]
+        [HttpGet("api/race/id/{id}")]
         public async Task<IActionResult> ControllerGetRaceById(int id)
         {
             var race = await _raceRepository.GetRaceByID(id);
             return Ok(race);
         }
 
-        [HttpGet("api/race/{title}")]
+        [HttpGet("api/race/title/{title}")]
         public async Task<IActionResult> ControllerGetRacesByTitle(string title)
         {
             var race = await _raceRepository.GetRacesByTitle(title);
