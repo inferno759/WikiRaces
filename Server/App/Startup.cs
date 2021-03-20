@@ -47,7 +47,7 @@ namespace WikiRacing
             services.AddScoped<Library.Interfaces.ILeaderBoardLineRepository, Data.Repositories.LeaderboardLineRepository>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
-             .WithOrigins("http://localhost:4200")
+             .WithOrigins("http://localhost:4200", "https://team4-project2.azurewebsites.net/")
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
