@@ -1,12 +1,26 @@
 <p>login works!</p>
 
 
+<div *ngIf="user">
+
+  <h2>{{user.username | uppercase}} Profile</h2>
+  <div><span>User id: </span>{{user.id}}</div>
+  <div> 
+  </div>
+</div>
+
+
+
+
 <div class="friend-list">
-  <a *ngFor="let friend of friends">
+  <a *ngFor="let friend of friend-list">
       {{user.id}}
       {{user.username}}
     </a>
 </div>
+
+
+
 
 <!--
 <div>
