@@ -32,14 +32,14 @@ namespace App.Controllers
             return Ok(leaderboardLines);
         }
 
-        [HttpGet("api/leaderboard/{user}")]
+        [HttpGet("api/leaderboard/{userId}")]
         public async Task<IActionResult> ControllerGetLeaderboardLineByUser(int userId)
         {
             var leaderboardLines = await _leaderboardLineRepository.GetLeaderboardLinesByUser(userId);
             return Ok(leaderboardLines);
         }
 
-        [HttpGet("api/leaderboard/{race}")]
+        [HttpGet("api/leaderboard/{raceId}")]
         public async Task<IActionResult> ControllerGetLeaderboardLineByRace(int raceId)
         {
             var leaderboardLines = await _leaderboardLineRepository.GetLeaderboardLinesByRace(raceId);
