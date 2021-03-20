@@ -48,7 +48,7 @@ namespace WikiRacing
             services.AddScoped<Library.Interfaces.ILeaderBoardLineRepository, Data.Repositories.LeaderboardLineRepository>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
-             .WithOrigins("http://localhost:4200")
+             .WithOrigins("http://localhost:4200", "https://team4-project2-client.azurewebsites.net/")
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
@@ -72,12 +72,10 @@ namespace WikiRacing
             app.UseStatusCodePages();
 
             app.UseHttpsRedirection();
-
-            /* change index.html to the mainpage
               
             app.UseRewriter(new RewriteOptions()
-                .AddRedirect("^$", "index.html"));
-            */
+                .AddRedirect("^$", "dashboard"));
+            
             app.UseStaticFiles();
             app.UseRouting();
 

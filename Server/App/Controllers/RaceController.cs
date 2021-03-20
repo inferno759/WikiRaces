@@ -31,11 +31,18 @@ namespace App.Controllers
             return Ok(races);
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("api/race/{id}")]
+        public async Task<IActionResult> ControllerGetRaceById(int id)
         {
-            return "value";
+            var race = await _raceRepository.GetRaceByID(id);
+            return Ok(race);
+        }
+
+        [HttpGet("api/race/{title}")]
+        public async Task<IActionResult> ControllerGetRacesByTitle(string title)
+        {
+            var race = await _raceRepository.GetRacesByTitle(title);
+            return Ok(race);
         }
 
         [HttpPost("api/race")]
