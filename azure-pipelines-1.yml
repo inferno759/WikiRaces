@@ -7,7 +7,7 @@ trigger: none
 resources:
   pipelines:
   - pipeline: Server_Pipeline
-    source: Team4-Project2-Server
+    source: 2102-feb08-net.Team4-Project2-Server
     trigger:
       branches:
         include:
