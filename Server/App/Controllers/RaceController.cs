@@ -31,17 +31,17 @@ namespace App.Controllers
             return Ok(races);
         }
 
-        [HttpGet("api/race/id/{id}")]
-        public async Task<IActionResult> ControllerGetRaceById(int id)
+        [HttpGet("api/race/id/{raceId}")]
+        public async Task<IActionResult> ControllerGetRaceById(int raceId)
         {
-            var race = await _raceRepository.GetRaceByID(id);
+            var race = await _raceRepository.GetRaceByID(raceId);
             return Ok(race);
         }
 
-        [HttpGet("api/race/title/{title}")]
-        public async Task<IActionResult> ControllerGetRacesByTitle(string title)
+        [HttpGet("api/race/title/{raceTitle}")]
+        public async Task<IActionResult> ControllerGetRacesByTitle(string raceTitle)
         {
-            var race = await _raceRepository.GetRacesByTitle(title);
+            var race = await _raceRepository.GetRacesByTitle(raceTitle);
             return Ok(race);
         }
 
