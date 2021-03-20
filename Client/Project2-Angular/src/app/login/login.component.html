@@ -1,22 +1,26 @@
 <p>login works!</p>
 
 
-<div *ngIf="user">
+<div *ngIf="currentUser">
 
   <h2>{{user.username | uppercase}} Profile</h2>
-  <div><span>User id: </span>{{user.id}}</div>
-  <div> 
-  </div>
+    <div><span>User id: </span>{{user.id}}</div>
+    <div> 
+    </div>
 </div>
 
 
 
-
-<div class="friend-list">
-  <a *ngFor="let friend of friend-list">
-      {{user.id}}
-      {{user.username}}
+<div *ngIf="users">
+  <ul>
+    <li *ngFor="let user of users">
+     <a>
+      <span class="badge">User ID: {{user.id}}
+      </span>
+      Username: {{user.username}}
     </a>
+    </li>
+  </ul>
 </div>
 
 
