@@ -1,9 +1,4 @@
 # ASP.NET Core (.NET Framework)
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
-    modifyOutputPath: false
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -78,6 +73,7 @@ steps:
     zipAfterPublish: true
 
 - task: AzureRmWebAppDeployment@4
+  displayName: Deploy
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(817ecea1-59d2-46d0-a921-fec66d0428ab)'
