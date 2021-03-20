@@ -17,8 +17,8 @@ export class LeaderboardService {
 
   constructor(private http: HttpClient) { }
 
-  getLeaderboardLines(id: number): Observable<LeaderboardLine[]> {
-    return this.http.get<LeaderboardLine[]>(`${this.leaderboardUrl}/${id}`)
+  getLeaderboardLinesByRaceId(raceId: number): Observable<LeaderboardLine[]> {
+    return this.http.get<LeaderboardLine[]>(`${this.leaderboardUrl}/${raceId}`)
       .pipe(
         tap(_ => this.log('fetched leaderboard')),
         catchError(this.handleError<LeaderboardLine[]>('getLeaderboardLines', []))

@@ -36,7 +36,7 @@ export class RaceDetailComponent implements OnInit {
 
   getLeaderboardLines(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.leaderboardService.getLeaderboardLines(id)
+    this.leaderboardService.getLeaderboardLinesByRaceId(id)
       .subscribe(lines => this.leaderboardLines = lines);
   }
 
