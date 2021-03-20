@@ -28,12 +28,12 @@ export class RaceService {
       );
   }
 
-  getRaceById(id: number): Observable<Race> {
-    const url = `${this.racesUrl}/id/${id}`;
+  getRaceById(raceId: number): Observable<Race> {
+    const url = `${this.racesUrl}/id/${raceId}`;
     return this.http.get<Race>(url)
       .pipe(
-        tap(_ => this.log(`fetched race with id ${id}`)),
-        catchError(this.handleError<Race>(`getRace id=${id}`))
+        tap(_ => this.log(`fetched race with id ${raceId}`)),
+        catchError(this.handleError<Race>(`getRace id=${raceId}`))
       );
   }
 
