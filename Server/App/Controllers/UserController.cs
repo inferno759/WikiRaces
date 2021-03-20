@@ -32,13 +32,21 @@ namespace App.Controllers
             return Ok(users);
         }
 
-        [HttpGet("api/user/{id}")]
+        [HttpGet("api/user/id/{userId}")]
         public async Task<IActionResult> ControllerGetUserById(int id)
         {
             var user = await _userRepository.GetUserByID(id);
             return Ok(user);
 
         }
+        [HttpGet("api/user/name/{username}")]
+        public async Task<IActionResult> ControllerGetUserByUsername(string username)
+        {
+            var user = await _userRepository.GetUserByUsername(username);
+            return Ok(user);
+
+        }
+
 
         [HttpPost("api/user")]
         public async Task<IActionResult> ControllerAddUser([Required] Library.Model.User user)
