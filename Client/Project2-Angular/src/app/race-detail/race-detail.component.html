@@ -1,0 +1,17 @@
+<div *ngIf="race">
+
+    <h2>{{race.raceTitle | uppercase}} Details</h2>
+    <div><span>id: </span>{{race.id}}</div>
+    <div> 
+    </div>
+</div>
+
+<div *ngIf="leaderboardLines">
+    <ul>
+        <li *ngFor="let line of leaderboardLines">
+            <a>
+              <span class="badge">{{line.userId}}</span> {{line.score}}
+            </a>
+        </li>
+    </ul>
+</div>

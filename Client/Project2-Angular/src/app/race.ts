@@ -1,5 +1,10 @@
 export interface Race {
     id: number;
+    authorId: number;
     raceTitle: string;
-    // Add more race properties
+    raceType: string;
+    timeLimit: number;
+    stepLimit: number;
+    startPage: string;
+    endPage: string;
   }

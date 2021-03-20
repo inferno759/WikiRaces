@@ -104,12 +104,12 @@ namespace Data.Repositories
             return leaderboardLines;
         }
 
-        public async Task<List<LeaderboardLine>> GetLeaderboardLinesByRace(Race race)
+        public async Task<List<LeaderboardLine>> GetLeaderboardLinesByRace(int raceId)
         {
             List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
             var query = await _context.LeaderboardLines
                 .Include(l => l.PathSteps)
-                .Where(x => x.RaceId == race.Id)
+                .Where(x => x.RaceId == raceId)
                 .ToListAsync();
             foreach (var leaderboardLine in query)
             {
@@ -133,12 +133,12 @@ namespace Data.Repositories
             return leaderboardLines;
         }
 
-        public async Task<List<LeaderboardLine>> GetLeaderboardLinesByUser(User user)
+        public async Task<List<LeaderboardLine>> GetLeaderboardLinesByUser(int userId)
         {
             List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
             var query = await _context.LeaderboardLines
                 .Include(l => l.PathSteps)
-                .Where(x => x.UserId == user.Id)
+                .Where(x => x.UserId == userId)
                 .ToListAsync();
             foreach (var leaderboardLine in query)
             {
