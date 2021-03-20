@@ -126,7 +126,7 @@ namespace Test.RepositoryTests
             await leaderboardRepo.AddLeaderboardLine(newLine);
             race = await raceRepo.GetRaceByID(1);
 
-            var compare = await leaderboardRepo.GetLeaderboardLinesByRace(race);
+            var compare = await leaderboardRepo.GetLeaderboardLinesByRace(race.Id);
             var first = compare[0];
             Assert.Equal(1, first.Id);
             Assert.Equal(1, first.RaceId);
@@ -161,7 +161,7 @@ namespace Test.RepositoryTests
             await leaderboardRepo.AddLeaderboardLine(newLine);
             racer = await userRepo.GetUserByID(1);
 
-            var compare = await leaderboardRepo.GetLeaderboardLinesByUser(racer);
+            var compare = await leaderboardRepo.GetLeaderboardLinesByUser(racer.Id);
             var first = compare[0];
             Assert.Equal(1, first.Id);
             Assert.Equal(1, first.RaceId);
