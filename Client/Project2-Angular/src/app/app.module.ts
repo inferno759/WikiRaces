@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RacesComponent } from './races/races.component';
 import { LoginComponent } from './login/login.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
+import { RacePlayComponent } from './race-play/race-play.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RaceDetailComponent } from './race-detail/race-detail.component';
     DashboardComponent,
     RacesComponent,
     LoginComponent,
-    RaceDetailComponent
+    RaceDetailComponent,
+    RacePlayComponent
   ],
   imports: [
     BrowserModule,
