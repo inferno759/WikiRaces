@@ -37,6 +37,20 @@ export class RaceService {
       );
   }
 
+  /* GET races whose raceTitle contains search term */
+  searchRaces(term: string) {
+    if (!term.trim()) {
+      // if not search term, return default race array. api/race/title/{raceTitle}
+      return this.getRaces();
+    }
+    return this.http.get<Race[]>(`${this.racesUrl}/title/${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found races matching "${term}"`) :
+        this.log(`no races matching "${term}"`)),
+      catchError(this.handleError<Race[]>('searchRaces', []))
+    );
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.
