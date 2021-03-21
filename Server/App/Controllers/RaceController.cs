@@ -52,6 +52,7 @@ namespace App.Controllers
             return Ok();
         }
 
+        /*
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -63,5 +64,7 @@ namespace App.Controllers
         public void Delete(int id)
         {
         }
+        */
+
     }
 }
