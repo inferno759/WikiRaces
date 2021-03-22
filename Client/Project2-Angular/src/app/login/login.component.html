@@ -1,66 +1,47 @@
-<p>login works!</p>
+<br>
+<br>
+<div id = loginPage>
+
+  <div *ngIf="currentUser">
+
+    <h2>{{user.username | uppercase}} Profile</h2>
+      <div><span>User id: </span>{{user.id}}</div>
+      <div> 
+      </div>
+  </div>
+
+  <div *ngIf="isRegister == false">
+    <form id= loginUser>
+      <label for= "usernameLogin" id= "userlabel"> Enter your Username</label>
+      <input type= "text" id="usernameLogin" placeholder="user">
+      <br>
+      <br>
+      <label for="passwordLogin" id= "userlabel">Enter your Password</label>
+      <input type= "text" id= "passwordLogin" placeholder= "password">
+      <br>
+      <button type="submit" id="loginSubmit">Submit</button>
+      <button id= "newUser" (click)="displayRegister()"> New user? </button>
+    </form>
+  </div>
 
 
-<div *ngIf="currentUser">
+  <div *ngIf= "isRegister == true" id= "registration">
+    <form id= registerUser>
+      <label for= "usernameLogin" id= "userlabel"> Enter a Username</label>
+      <input type= "text" id="usernameLogin" placeholder="user">
+      <br>
+      <br>
+      <label for="passwordLogin" id= "userlabel">Enter a Password</label>
+      <input type= "text" id= "passwordLogin" placeholder= "password">
+      <br>
+      <button type="submit" id="loginSubmit">Register</button>
+      <br>
+      <br>
+      <button id= "goBackToLogin" (click)= "goBackToLogin()">Return to Login</button>
+    </form>
+  </div>
 
-  <h2>{{user.username | uppercase}} Profile</h2>
-    <div><span>User id: </span>{{user.id}}</div>
-    <div> 
-    </div>
-</div>
-
-<div *ngIf="isRegister == false">
-  <form id= loginUser>
-    <label for= "usernameLogin"> Enter your Username</label>
-    <input type= "text" id="usernameLogin" placeholder="user">
-    <br>
-    <br>
-    <label for="passwordLogin">Enter your Password</label>
-    <input type= "text" id= "passwordLogin" placeholder= "password">
-    <br>
-    <button type="submit" id="loginSubmit">Submit</button>
-    
-    <button id= "newUser" (click)="displayRegister()"> New user? </button>
-  </form>
-</div>
-
-
-<div *ngIf= "isRegister == true" id= "registration">
-<form id= RegisterUser>
-  <label for= "usernameLogin"> Enter a Username</label>
-  <input type= "text" id="usernameLogin" placeholder="user">
-  <br>
-  <br>
-  <label for="passwordLogin">Enter a Password</label>
-  <input type= "text" id= "passwordLogin" placeholder= "password">
-  <br>
-  <button type="submit" id="loginSubmit">Register</button>
-  <br>
-  <br>
-  <button id= "goBackToLogin" (click)= "goBackToLogin()">Return to Login</button>
-</form>
-</div>
-
-
-
-<div *ngIf="users">
-  <ul>
-    <li *ngFor="let user of users">
-     <a>
-      <span class="badge">User ID: {{user.id}}
-      </span>
-      Username: {{user.username}}
-    </a>
-    </li>
-  </ul>
 </div>
 
 
 
-
-<!--
-<div>
-<label for="username">Enter your Username:</label>
-<input id="username" [(ngModel)]=""
-</div>
--->
