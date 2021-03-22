@@ -14,6 +14,7 @@ namespace Library.Interfaces
         Task<List<User>> GetAllUsers();
         Task AddUser(User user);
         Task UpdateUser(User user);
+        Task<bool> CheckUserInfoExists(string userName, string passwordInput);
         //Task DeleteUser(User user);
     }
 }

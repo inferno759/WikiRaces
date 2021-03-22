@@ -10,6 +10,7 @@ import { RacesComponent } from './races/races.component';
 import { LoginComponent } from './login/login.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
+import { LoginProfileComponent } from './login-profile/login-profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RacePlayComponent } from './race-play/race-play.component';
     RacesComponent,
     LoginComponent,
     RaceDetailComponent,
-    RacePlayComponent
+    RacePlayComponent,
+    LoginProfileComponent
   ],
   imports: [
     BrowserModule,
