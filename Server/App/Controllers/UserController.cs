@@ -46,14 +46,20 @@ namespace App.Controllers
             return Ok(user);
 
         }
-
-
         [HttpPost("api/user")]
         public async Task<IActionResult> ControllerAddUser([Required] Library.Model.User user)
         {
             await _userRepository.AddUser(user);
             return Ok();
         }
+        [HttpGet("api/user")]
+        public async Task<IActionResult> ControllerCheckLogin(string username, string password)
+        {
+            bool userExists = await _userRepository.CheckUserInfoExists(username, password);
+            return Ok(userExists);
+
+        }
+
 
         /*
          
