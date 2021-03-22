@@ -9,7 +9,7 @@ import { Race } from './race';
   providedIn: 'root'
 })
 export class RaceService {
-  private racesUrl = 'https://team4-project2.azurewebsites.net/api/race';  // URL to web api
+  private racesUrl = `${location.origin}/api/race`;  // URL to web api 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -51,10 +51,10 @@ export class RaceService {
     );
   }
 
-  addRace(race: Race) {
+  addRace(race: Race): Observable<Race> {
     return this.http.post<Race>(this.racesUrl, race, this.httpOptions).pipe(
-      tap((newRace: Race) => this.log(`added hero w/ id=${newRace.id}`)),
-      catchError(this.handleError<Race>(`addHero`))
+      tap(() => this.log(`added race`)),
+      catchError(this.handleError<Race>(`addRace`))
     );
   }
 

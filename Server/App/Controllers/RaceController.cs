@@ -65,7 +65,7 @@ namespace App.Controllers
         }
 
         [HttpPost("api/race")]
-        public async Task<IActionResult> ControllerAddRace([Required] Library.Model.Race race)
+        public async Task<IActionResult> ControllerAddRace([Required] Race race)
         {
             await _raceRepository.AddRace(race);
             return Ok();
