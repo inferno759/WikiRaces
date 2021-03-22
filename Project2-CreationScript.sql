@@ -58,3 +58,29 @@ CREATE TABLE Friends (
 	CONSTRAINT FK_Friends_User FOREIGN KEY (UserID) REFERENCES Users,
 	CONSTRAINT FK_Friends_Friend FOREIGN KEY (FriendID) REFERENCES Users
 );	
+
+--- some test data
+
+INSERT INTO Users (Username, Password) VALUES ('Trevordunbar', 'Password123!');
+INSERT INTO Users (Username, Password) VALUES ('BrandonFaulkenberry', 'BrandonsPassword123!');
+INSERT INTO Users (Username, Password) VALUES ('CalebOwens', 'CalebsPassword123!');
+
+INSERT INTO Races (AuthorID, Title, Type, TimeLimit, StepLimit, StartPage, EndPage) VALUES (1, 'Trevors race', 'Timed', 10000, 4, 'https://en.wikipedia.org/wiki/Elvis_Presley', 'https://en.wikipedia.org/wiki/Russia');
+INSERT INTO Races (AuthorID, Title, Type, TimeLimit, StepLimit, StartPage, EndPage) VALUES (2, 'Brandons race', 'StepLimit', 10000, 3, 'https://en.wikipedia.org/wiki/Hawaii', 'https://en.wikipedia.org/wiki/Pro_Bowl');
+INSERT INTO Races (AuthorID, Title, Type, TimeLimit, StepLimit, StartPage, EndPage) VALUES (3, 'Calebs race', 'Timed', 120, 6, 'https://en.wikipedia.org/wiki/Earth', 'https://en.wikipedia.org/wiki/Extinction');
+
+INSERT INTO LeaderboardLines (RaceID, UserID, Score, TimeElapsed, StepsTaken, CompletionDate) VALUES (1, 2, 100, 500, 2, '20120618 10:34:09 AM');
+
+INSERT INTO PathStep (LeaderboardID, CurrentPage, StepNumber, TimeSpent) VALUES (4, 'https://en.wikipedia.org/wiki/Elvis_Presley', 1, 250);
+INSERT INTO PathStep (LeaderboardID, CurrentPage, StepNumber, TimeSpent) VALUES (4, 'https://en.wikipedia.org/wiki/CBS', 2, 250);
+
+INSERT INTO Friends (UserID, FriendID) VALUES (2, 3);
+INSERT INTO Friends (UserID, FriendID) VALUES (3, 2);
+
+--- select
+
+SELECT * FROM Friends;
+SELECT * FROM LeaderboardLines;
+SELECT * FROM PathStep;
+SELECT * FROM Races;
+SELECT * FROM Users;
