@@ -27,7 +27,7 @@ namespace Test.RepositoryTests
             time, path, racer);
 
             
-            Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
+            Race race = new Race(0, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
             var raceRepo = new RaceRepository(context);
@@ -61,7 +61,7 @@ namespace Test.RepositoryTests
             time, path, racer);
 
             
-            Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
+            Race race = new Race(0, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
             var raceRepo = new RaceRepository(context);
@@ -96,7 +96,7 @@ namespace Test.RepositoryTests
             time, path, racer);
 
             
-            Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
+            Race race = new Race(0, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
             var raceRepo = new RaceRepository(context);
@@ -122,7 +122,7 @@ namespace Test.RepositoryTests
             time, path, racer);
 
             
-            Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
+            Race race = new Race(0, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
             var raceRepo = new RaceRepository(context);
@@ -158,7 +158,7 @@ namespace Test.RepositoryTests
             time, path, racer);
 
             
-            Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
+            Race race = new Race(0, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
             var raceRepo = new RaceRepository(context);
