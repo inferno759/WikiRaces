@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RacesComponent } from './races/races.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
+import { RaceAddComponent } from './race-add/race-add.component';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'races', component: RacesComponent },
+  { path: 'races/add', component: RaceAddComponent },
   { path: 'races/detail/:id', component: RaceDetailComponent },
   { path: 'races/detail/:id/play', component: RacePlayComponent },
 ];

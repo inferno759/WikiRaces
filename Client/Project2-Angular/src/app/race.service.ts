@@ -51,6 +51,13 @@ export class RaceService {
     );
   }
 
+  addRace(race: Race) {
+    return this.http.post<Race>(this.racesUrl, race, this.httpOptions).pipe(
+      tap((newRace: Race) => this.log(`added hero w/ id=${newRace.id}`)),
+      catchError(this.handleError<Race>(`addHero`))
+    );
+  }
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.
