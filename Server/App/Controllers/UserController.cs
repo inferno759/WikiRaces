@@ -37,29 +37,29 @@ namespace App.Controllers
         {
             var user = await _userRepository.GetUserByID(id);
             return Ok(user);
-
         }
+
         [HttpGet("api/user/name/{username}")]
         public async Task<IActionResult> ControllerGetUserByUsername(string username)
         {
             var user = await _userRepository.GetUserByUsername(username);
             return Ok(user);
-
         }
+
         [HttpPost("api/user")]
         public async Task<IActionResult> ControllerAddUser([Required] Library.Model.User user)
         {
             await _userRepository.AddUser(user);
             return Ok();
         }
-        [HttpGet("api/user")]
+
+        /*[HttpGet("api/user")]
         public async Task<IActionResult> ControllerCheckLogin(string username, string password)
         {
             bool userExists = await _userRepository.CheckUserInfoExists(username, password);
             return Ok(userExists);
 
-        }
-
+        }*/
 
         /*
          

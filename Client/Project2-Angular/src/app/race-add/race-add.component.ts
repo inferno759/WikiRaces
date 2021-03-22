@@ -20,7 +20,7 @@ export class RaceAddComponent implements OnInit {
   ngOnInit(): void {
     this.race = {
       id: 0,
-      authorId: 0,  // fill this based on currently logged in user
+      authorId: 1,  // fill this based on currently logged in user
       raceTitle: "",
       raceType: "",
       timeLimit: 0,
@@ -31,6 +31,7 @@ export class RaceAddComponent implements OnInit {
   }
 
   add(): void{
+    console.info(this.race);
     this.raceService.addRace(this.race);
   }
 

@@ -21,19 +21,21 @@ namespace Data.Repositories
 
         public async Task AddRace(Race race)
         {
-            Entities.Race newRace = new Entities.Race
+            if (race.Id == 0)
             {
-                Id = race.Id,
-                Title = race.RaceTitle,
-                Type = race.RaceType,
-                TimeLimit = race.TimeLimit,
-                StepLimit = race.StepLimit,
-                StartPage = race.StartPage,
-                EndPage = race.EndPage,
-                AuthorId = race.AuthorId   // user foreign key
-            };
-            await _context.AddAsync(newRace);
-            await _context.SaveChangesAsync();
+                Entities.Race newRace = new Entities.Race
+                {
+                    Title = race.RaceTitle,
+                    Type = race.RaceType,
+                    TimeLimit = race.TimeLimit,
+                    StepLimit = race.StepLimit,
+                    StartPage = race.StartPage,
+                    EndPage = race.EndPage,
+                    AuthorId = race.AuthorId   // user foreign key
+                };
+                await _context.AddAsync(newRace);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public Task DeleteRace(Race race)
