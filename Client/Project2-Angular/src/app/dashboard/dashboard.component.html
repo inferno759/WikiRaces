@@ -1,17 +1,21 @@
-
+<h1>Welcome to WikiRaces!</h1>
 <h2>What Is WikiRaces?</h2>
 <div>
-    (Describe how to play the game here)
+    <p id="description">
+        WikiRacing is a game where a player must successfully navigate between a starting page and ending page within Wikipedia
+        as fast as they can. All links within the body of the article that redirect to other Wikipedia articles are valid. Now go play!
+    </p>
 </div>
 
 <h2>Top Races</h2>
 <div class="races-menu">
-    <a *ngFor="let race of races"
+    <ul>
+        <li *ngFor="let race of races"
         routerLink="/races/detail/{{race.id}}">
-        {{race.id}}
-        {{race.raceTitle}}
-      </a>
+            <a>
+                {{race.raceTitle}}
+          </a>
+        </li>
+    </ul>
+    
 </div>
-
-
-

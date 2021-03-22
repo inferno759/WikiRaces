@@ -1,0 +1,30 @@
+*{
+    text-align: center;
+}
+
+.races{
+    list-style-type: none;
+    text-align: center;
+    margin-left: 600px;
+    width: 300px;
+    font-size: large;
+}
+
+.races a{
+    text-decoration: none;
+    display: block;
+    border-style: solid;
+    width: 300px;
+    margin: 5px;
+    background-color: #A5FFD6;
+}
+
+.races a:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+.races a:active{
+    background-color: black;
+    color: white;
+}

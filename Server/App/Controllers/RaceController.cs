@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 using Library;
 using Library.Interfaces;
 using Library.Model;
 using Data;
-using System.ComponentModel.DataAnnotations;
+using App.Service;
 
 
 namespace App.Controllers
@@ -17,10 +19,12 @@ namespace App.Controllers
     public class RaceController : ControllerBase
     {
         private readonly IRaceRepository _raceRepository;
+        private readonly WebScraperService _webScraperService;
 
-        public RaceController(IRaceRepository raceRepository)
+        public RaceController(IRaceRepository raceRepository, WebScraperService webScraperService)
         {
             _raceRepository = raceRepository;
+            _webScraperService = webScraperService;
         }
 
 
@@ -43,6 +47,21 @@ namespace App.Controllers
         {
             var race = await _raceRepository.GetRacesByTitle(raceTitle);
             return Ok(race);
+        }
+
+        [HttpGet("api/race/play/{raceId}")]
+        public async Task<IActionResult> ControllerPlayRace(int raceId)
+        {
+            var race = await _raceRepository.GetRaceByID(raceId);
+            var page = await _webScraperService.Start(race.StartPage);
+            return Ok();
+        }
+
+        [HttpGet("api/race/play")]
+        public async Task<IActionResult> ControllerPlayRaceStep(string current, string step)
+        {
+            var page = await _webScraperService.Step(current, step);
+            return Ok();
         }
 
         [HttpPost("api/race")]

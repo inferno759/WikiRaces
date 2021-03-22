@@ -51,6 +51,7 @@ namespace Data.Repositories
             {
                 query = await _context.LeaderboardLines
                     .Include(l => l.PathSteps)
+                    .Include(u => u.User)
                     .FirstAsync(x => x.Id == id);
             }
             catch
@@ -63,15 +64,21 @@ namespace Data.Repositories
                 RaceId = query.RaceId,
                 UserId = query.UserId,
                 Score = query.Score,
-                TimeElapsed = (float) query.TimeElapsed,
+                TimeElapsed = (float)query.TimeElapsed,
                 StepsTaken = query.StepsTaken,
                 LeaderboardDateTime = query.CompletionDate,
                 Path = query.PathSteps.Select(ps => new PathStep
                 {
                     CurrentPage = ps.CurrentPage,
-                    TimeSpent = (float) ps.TimeSpent,
+                    TimeSpent = (float)ps.TimeSpent,
                     StepNumber = ps.StepNumber
-                }).ToList()
+                }).ToList(),
+                User = new User
+                {
+                    Id = query.User.Id,
+                    Username = query.User.Username,
+                    Password = query.User.Password,
+                }
             };
             return leaderboardLine;
         }
@@ -81,6 +88,7 @@ namespace Data.Repositories
             List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
             var query = await _context.LeaderboardLines
                 .Include(l => l.PathSteps)
+                .Include(u => u.User)
                 .ToListAsync();
             foreach (var leaderboardLine in query)
             {
@@ -98,7 +106,13 @@ namespace Data.Repositories
                         CurrentPage = ps.CurrentPage,
                         StepNumber = ps.StepNumber,
                         TimeSpent = (float)ps.TimeSpent
-                    }).ToList()
+                    }).ToList(),
+                    User = new User
+                    {
+                        Id = leaderboardLine.User.Id,
+                        Username = leaderboardLine.User.Username,
+                        Password = leaderboardLine.User.Password,
+                    }
                 });
             }
             return leaderboardLines;
@@ -109,6 +123,7 @@ namespace Data.Repositories
             List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
             var query = await _context.LeaderboardLines
                 .Include(l => l.PathSteps)
+                .Include(u => u.User)
                 .Where(x => x.RaceId == raceId)
                 .ToListAsync();
             foreach (var leaderboardLine in query)
@@ -127,7 +142,13 @@ namespace Data.Repositories
                         CurrentPage = ps.CurrentPage,
                         StepNumber = ps.StepNumber,
                         TimeSpent = (float)ps.TimeSpent
-                    }).ToList()
+                    }).ToList(),
+                    User = new User
+                    {
+                        Id = leaderboardLine.User.Id,
+                        Username = leaderboardLine.User.Username,
+                        Password = leaderboardLine.User.Password,
+                    }
                 });
             }
             return leaderboardLines;
@@ -138,6 +159,7 @@ namespace Data.Repositories
             List<LeaderboardLine> leaderboardLines = new List<LeaderboardLine>();
             var query = await _context.LeaderboardLines
                 .Include(l => l.PathSteps)
+                .Include(u => u.User)
                 .Where(x => x.UserId == userId)
                 .ToListAsync();
             foreach (var leaderboardLine in query)
@@ -156,7 +178,13 @@ namespace Data.Repositories
                         CurrentPage = ps.CurrentPage,
                         StepNumber = ps.StepNumber,
                         TimeSpent = (float)ps.TimeSpent
-                    }).ToList()
+                    }).ToList(),
+                    User = new User
+                    {
+                        Id = leaderboardLine.User.Id,
+                        Username = leaderboardLine.User.Username,
+                        Password = leaderboardLine.User.Password,
+                    }
                 });
             }
             return leaderboardLines;

@@ -7,12 +7,12 @@
 
     <a routerLink="play">Play!</a>
 </div>
-
+<h3>Leaderboard Entries:</h3>
 <div *ngIf="leaderboardLines">
     <ul>
-        <li *ngFor="let line of leaderboardLines">
+        <li *ngFor="let line of leaderboardLines; let i=index">
             <a>
-              <span class="badge">User ID: {{line.userId}}</span>Score: {{line.score}}
+              <span class="badge">User ID: {{line.user.username}}</span> Score: {{line.score}}
             </a>
         </li>
     </ul>
