@@ -1,4 +1,5 @@
 import { PathStep } from './pathStep';
+import { User } from './user';
 
 export interface LeaderboardLine {
     id: number;
@@ -9,4 +10,5 @@ export interface LeaderboardLine {
     stepsTaken: number;
     leaderboardDateTime: string;
     path: PathStep[];
+    user: User;
   }

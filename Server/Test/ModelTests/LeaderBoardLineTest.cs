@@ -31,7 +31,7 @@ namespace Test
             });
 
             LeaderboardLine leaderboardLine = new LeaderboardLine(id, raceID, userID, score, timeElapsed,
-                stepsTaken, leaderboardDateTime, paths);
+                stepsTaken, leaderboardDateTime, paths, new User(1, "tdunbar", "password"));
 
             Assert.Equal(1, leaderboardLine.Id);
             Assert.Equal(2, leaderboardLine.RaceId);
