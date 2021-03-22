@@ -11,7 +11,6 @@
 }
 
 .races a{
-    text-decoration: none;
     display: block;
     border-style: solid;
     width: 300px;
@@ -27,4 +26,8 @@
 .races a:active{
     background-color: black;
     color: white;
+}
+
+#search-box{
+    background-color: white;
 }
