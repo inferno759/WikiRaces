@@ -8,6 +8,13 @@ using Library.Interfaces;
 using Library.Model;
 using Data;
 using System.ComponentModel.DataAnnotations;
+using App.Service;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Newtonsoft.Json;
+
 
 namespace App.Controllers
 {
@@ -18,10 +25,13 @@ namespace App.Controllers
     {
 
         private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
+        private readonly HttpClient httpClient = new HttpClient();
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, ITokenService tokenService)
         {
             _userRepository = userRepository;
+            _tokenService = tokenService;
         }
 
 
@@ -32,13 +42,17 @@ namespace App.Controllers
             return Ok(users);
         }
 
+        /*
         [HttpGet("api/user/id/{userId}")]
         public async Task<IActionResult> ControllerGetUserById(int id)
         {
-            var user = await _userRepository.GetUserByID(id);
-            return Ok(user);
 
+           
         }
+        */
+
+
+
         [HttpGet("api/user/name/{username}")]
         public async Task<IActionResult> ControllerGetUserByUsername(string username)
         {

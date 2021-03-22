@@ -14,13 +14,14 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Data;
 using Data.Entities;
 using Library;
 using Library.Interfaces;
 using Data.Repositories;
 using App.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WikiRacing
 {
@@ -38,6 +39,8 @@ namespace WikiRacing
         {
             string connectionString = Configuration.GetConnectionString("Project2");
 
+            services.AddSingleton<ITokenService, TokenService>();
+            services.Configure<App.OktaConfig>(Configuration.GetSection("Okta"));
             services.AddDbContext<Project2Context>(options =>
             {
                 options.UseSqlServer(connectionString);
@@ -54,6 +57,28 @@ namespace WikiRacing
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://dev-50964723.okta.com/oauth2/default";
+                    options.Audience = "api://default";
+
+                });
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+
+                options.AddPolicy("AllowedAddresses", policy => policy.RequireAssertion(context =>
+                {
+                    var allowed = (IEnumerable<string>)context.Resource;
+                    string userAddress = context.User.FindFirst(c => c.Type.Contains("nameidentifier")).Value;
+
+                    return allowed.Contains(userAddress);
+                }));
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -82,6 +107,7 @@ namespace WikiRacing
             app.UseRouting();
 
             app.UseCors();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
