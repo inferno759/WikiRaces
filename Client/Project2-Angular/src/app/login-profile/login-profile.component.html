@@ -1,0 +1,15 @@
+<p>login-profile works!</p>
+
+
+<div id="userList" *ngIf="users">
+  <table>
+      <thead>
+          <th>Username</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of users">
+              <td>{{user.username}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>

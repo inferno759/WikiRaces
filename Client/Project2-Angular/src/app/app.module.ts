@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
 import { RaceAddComponent } from './race-add/race-add.component';
+import { LoginProfileComponent } from './login-profile/login-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RaceAddComponent } from './race-add/race-add.component';
     LoginComponent,
     RaceDetailComponent,
     RacePlayComponent,
-    RaceAddComponent
+    RaceAddComponent,
+    LoginProfileComponent
   ],
   imports: [
     BrowserModule,

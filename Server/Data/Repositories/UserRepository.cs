@@ -98,6 +98,18 @@ namespace Data.Repositories
             }
             return users;
         }
+        public async Task<bool> CheckUserInfoExists(string userName, string passwordInput)
+        {
+            bool exists = false;
+            var allUsers = await _context.Users
+                .Where(u => u.Username == userName && u.Password == passwordInput).ToListAsync();
+
+            foreach (var c in allUsers)
+            {
+                exists = true;
+            }
+            return exists;
+        }
 
         /// <summary>
         /// Update a users Friends list/password/username

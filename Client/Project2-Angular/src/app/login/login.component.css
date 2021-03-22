@@ -1,6 +1,14 @@
+#loginPage{
+  
+  background-color: rgb(230, 230, 230);
+  display: block;
+  position: relative;
+  left: 10%;
+}
+
 #newUser {
   border: none;
-  background-color: inherit;
+  background-color: rgb(230, 230, 230);
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
@@ -10,10 +18,30 @@
 
 #goBackToLogin {
   border: none;
-  background-color: inherit;
+  background-color: rgb(230, 230, 230);
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
   color: dodgerblue;
+}
+#usernameLogin {
+  background-color: rgb(230, 230, 230);
+}
+#passwordLogin {
+  background-color: rgb(230, 230, 230);
+}
+#loginUser {
+width: 30%;
+background-color: rgb(230, 230, 230);
+}
+#registerUser {
+  width: 30%;
+  background-color: rgb(230, 230, 230);
+}
+#loginSubmit {
+  background-color: rgb(230, 230, 230);
+}
+#userlabel {
+  background-color: rgb(230, 230, 230);
 }
