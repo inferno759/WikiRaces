@@ -8,7 +8,7 @@ using Library.Interfaces;
 using Library.Model;
 using Data;
 using System.ComponentModel.DataAnnotations;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace App.Controllers
 {
@@ -24,7 +24,7 @@ namespace App.Controllers
             _leaderboardLineRepository = leaderboardLineRepository;
         }
 
-
+        [AllowAnonymous]
         [HttpGet("api/leaderboard")]
         public async Task<IActionResult> ControllerGetAllLeaderboardLines()
         {
@@ -32,6 +32,7 @@ namespace App.Controllers
             return Ok(leaderboardLines);
         }
 
+        [AllowAnonymous]
         [HttpGet("api/leaderboard/user/{userId}")]
         public async Task<IActionResult> ControllerGetLeaderboardLineByUser(int userId)
         {
@@ -39,6 +40,7 @@ namespace App.Controllers
             return Ok(leaderboardLines);
         }
 
+        [AllowAnonymous]
         [HttpGet("api/leaderboard/race/{raceId}")]
         public async Task<IActionResult> ControllerGetLeaderboardLineByRace(int raceId)
         {
@@ -46,6 +48,7 @@ namespace App.Controllers
             return Ok(leaderboardLines);
         }
 
+        [AllowAnonymous]
         [HttpPost("api/leaderboard")]
         public async Task<IActionResult> ControllerAddLeaderboardLine([Required] LeaderboardLine leaderboardLine)
         {

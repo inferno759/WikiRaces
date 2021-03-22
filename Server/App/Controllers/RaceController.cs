@@ -10,7 +10,7 @@ using Library.Interfaces;
 using Library.Model;
 using Data;
 using App.Service;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace App.Controllers
 {
@@ -27,7 +27,7 @@ namespace App.Controllers
             _webScraperService = webScraperService;
         }
 
-
+        [AllowAnonymous]
         [HttpGet("api/race")]
         public async Task<IActionResult> ControllerGetAllRaces()
         {
@@ -35,6 +35,7 @@ namespace App.Controllers
             return Ok(races);
         }
 
+        [AllowAnonymous]
         [HttpGet("api/race/id/{raceId}")]
         public async Task<IActionResult> ControllerGetRaceById(int raceId)
         {
@@ -42,6 +43,7 @@ namespace App.Controllers
             return Ok(race);
         }
 
+        [AllowAnonymous]
         [HttpGet("api/race/title/{raceTitle}")]
         public async Task<IActionResult> ControllerGetRacesByTitle(string raceTitle)
         {
@@ -49,6 +51,7 @@ namespace App.Controllers
             return Ok(race);
         }
 
+        [AllowAnonymous]
         [HttpGet("api/race/play/{raceId}")]
         public async Task<IActionResult> ControllerPlayRace(int raceId)
         {
@@ -57,6 +60,7 @@ namespace App.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet("api/race/play")]
         public async Task<IActionResult> ControllerPlayRaceStep(string current, string step)
         {
@@ -64,6 +68,7 @@ namespace App.Controllers
             return Ok();
         }
 
+        
         [HttpPost("api/race")]
         public async Task<IActionResult> ControllerAddRace([Required] Race race)
         {

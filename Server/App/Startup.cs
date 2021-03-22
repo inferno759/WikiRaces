@@ -22,6 +22,7 @@ using Library.Interfaces;
 using Data.Repositories;
 using App.Service;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace WikiRacing
 {
@@ -57,13 +58,16 @@ namespace WikiRacing
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
-            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
+          
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.Authority = "https://dev-50964723.okta.com/oauth2/default";
                     options.Audience = "api://default";
 
                 });
+
             services.AddAuthorization(options =>
             {
                 options.FallbackPolicy = new AuthorizationPolicyBuilder()
@@ -73,7 +77,7 @@ namespace WikiRacing
                 options.AddPolicy("AllowedAddresses", policy => policy.RequireAssertion(context =>
                 {
                     var allowed = (IEnumerable<string>)context.Resource;
-                    string userAddress = context.User.FindFirst(c => c.Type.Contains("nameidentifier")).Value;
+                    string userAddress = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                     return allowed.Contains(userAddress);
                 }));
