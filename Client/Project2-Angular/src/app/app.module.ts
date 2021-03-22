@@ -10,6 +10,7 @@ import { RacesComponent } from './races/races.component';
 import { LoginComponent } from './login/login.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
+import { RaceAddComponent } from './race-add/race-add.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { LoginProfileComponent } from './login-profile/login-profile.component';
     LoginComponent,
     RaceDetailComponent,
     RacePlayComponent,
+    RaceAddComponent,
     LoginProfileComponent
   ],
   imports: [

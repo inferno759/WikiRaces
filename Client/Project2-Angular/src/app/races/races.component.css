@@ -30,4 +30,19 @@
 
 #search-box{
     background-color: white;
+    margin-top: 20px;
+}
+
+#create-race{
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 8px;
+    color: black;
+    background-color: gray;
+}
+
+#create-race:hover{
+    cursor: pointer;
+    background-color: rgb(165, 165, 165);
 }
