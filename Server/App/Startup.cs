@@ -50,7 +50,7 @@ namespace WikiRacing
             services.AddScoped<App.Service.WebScraperService>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
-             .WithOrigins("http://localhost:4200", "https://team4-project2-client.azurewebsites.net", "http://team4-project2-client.azurewebsites.net")
+             .WithOrigins("http://localhost:4200", "https://team4-project2-client.azurewebsites.net")
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
