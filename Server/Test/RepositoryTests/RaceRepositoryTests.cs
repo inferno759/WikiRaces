@@ -20,7 +20,7 @@ namespace Test.RepositoryTests
 
             User author = new User(1, "Caleb", "Password");
 
-            int id = 1;
+            int id = 0;
             int authorId = 1;
             string title = "My Race";
             string type = "Timed";
@@ -40,7 +40,6 @@ namespace Test.RepositoryTests
 
             // assert
             var compare = context.Races.Local.Single(x => x.Id == 1);
-            Assert.Equal(insertedRace.Id, compare.Id);
             Assert.Equal(insertedRace.AuthorId, compare.AuthorId);
             Assert.Equal(insertedRace.RaceTitle, compare.Title);
             Assert.Equal(insertedRace.RaceType, compare.Type);
@@ -58,7 +57,7 @@ namespace Test.RepositoryTests
 
             User author = new User(1, "Caleb", "Password");
 
-            int id = 1;
+            int id = 0;
             int authorId = 1;
             string title = "My Race";
             string type = "Timed";
@@ -78,7 +77,6 @@ namespace Test.RepositoryTests
 
             // assert
             var compare = await repo.GetRaceByID(1);
-            Assert.Equal(insertedRace.Id, compare.Id);
             Assert.Equal(insertedRace.AuthorId, compare.AuthorId);
             Assert.Equal(insertedRace.RaceTitle, compare.RaceTitle);
             Assert.Equal(insertedRace.RaceType, compare.RaceType);
@@ -96,7 +94,7 @@ namespace Test.RepositoryTests
 
             User author = new User(1, "Caleb", "Password");
 
-            int id = 1;
+            int id = 0;
             int authorId = 1;
             string title = "My Race";
             string type = "Timed";
@@ -116,7 +114,6 @@ namespace Test.RepositoryTests
 
             // assert
             var compare = await repo.GetRacesByTitle("My Race");
-            Assert.Equal(insertedRace.Id, compare[0].Id);
             Assert.Equal(insertedRace.AuthorId, compare[0].AuthorId);
             Assert.Equal(insertedRace.RaceTitle, compare[0].RaceTitle);
             Assert.Equal(insertedRace.RaceType, compare[0].RaceType);
