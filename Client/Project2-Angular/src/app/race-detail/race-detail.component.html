@@ -1,19 +1,23 @@
 <div *ngIf="race">
 
-    <h2>{{race.raceTitle | uppercase}} Details</h2>
-    <div><span>Race id: </span>{{race.id}}</div>
-    <div> 
-    </div>
+    <h2>{{race.raceTitle | uppercase}}</h2>
 
-    <a routerLink="play">Play!</a>
+    <a id="play-button" routerLink="play">Play!</a>
+    <button id="back-button" (click)="goBack()">Go Back</button>
 </div>
-<h3>Leaderboard Entries:</h3>
-<div *ngIf="leaderboardLines">
-    <ul>
-        <li *ngFor="let line of leaderboardLines; let i=index">
-            <a>
-              <span class="badge">User ID: {{line.user.username}}</span> Score: {{line.score}}
-            </a>
-        </li>
-    </ul>
+<h3><u>Leaderboard</u></h3>
+<div id="leaderboard" *ngIf="leaderboardLines">
+    <table>
+        <thead>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Score</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let line of leaderboardLines">
+                <td>{{line.user.username}}</td>
+                <td>{{line.score}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

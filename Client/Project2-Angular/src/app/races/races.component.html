@@ -3,12 +3,12 @@
     Browse Races
   </h1>
     <form>
-      <label for="search-box">Search Races</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+      <label for="search-box">Search Races: </label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
     </form>
     <ul class="races">
-        <li *ngFor="let race of races$ | async">
-          <a routerLink="/races/detail/{{race.id}}">
+        <li *ngFor="let race of races$ | async" routerLink="/races/detail/{{race.id}}">
+          <a >
             {{race.raceTitle}}
           </a>
         </li>
