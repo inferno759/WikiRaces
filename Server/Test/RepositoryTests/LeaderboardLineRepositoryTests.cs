@@ -22,10 +22,11 @@ namespace Test.RepositoryTests
             List<PathStep> path = new List<PathStep>();
             path.Add(new PathStep("https://en.wikipedia.org/wiki/MARCKSL1", (float)25.2, 1));
             path.Add(new PathStep("https://en.wikipedia.org/wiki/Calmodulin", (float)50.3, 2));
-            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
-            time, path);
-
             User racer = new User(1, "Trevor", "PAssword");
+            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
+            time, path, racer);
+
+            
             Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
@@ -55,10 +56,11 @@ namespace Test.RepositoryTests
             List<PathStep> path = new List<PathStep>();
             path.Add(new PathStep("https://en.wikipedia.org/wiki/MARCKSL1", (float)25.2, 1));
             path.Add(new PathStep("https://en.wikipedia.org/wiki/Calmodulin", (float)50.3, 2));
-            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
-            time, path);
-
             User racer = new User(1, "Trevor", "PAssword");
+            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
+            time, path, racer);
+
+            
             Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
@@ -76,6 +78,7 @@ namespace Test.RepositoryTests
             Assert.Equal(2, compare.StepsTaken);
             Assert.Equal(time, compare.LeaderboardDateTime);
             Assert.NotEmpty(compare.Path);
+            Assert.Equal("Trevor", compare.User.Username);
         }
 
         [Fact]
@@ -88,10 +91,11 @@ namespace Test.RepositoryTests
             List<PathStep> path = new List<PathStep>();
             path.Add(new PathStep("https://en.wikipedia.org/wiki/MARCKSL1", (float)25.2, 1));
             path.Add(new PathStep("https://en.wikipedia.org/wiki/Calmodulin", (float)50.3, 2));
-            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
-            time, path);
-
             User racer = new User(1, "Trevor", "PAssword");
+            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
+            time, path, racer);
+
+            
             Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
@@ -113,10 +117,11 @@ namespace Test.RepositoryTests
             List<PathStep> path = new List<PathStep>();
             path.Add(new PathStep("https://en.wikipedia.org/wiki/MARCKSL1", (float)25.2, 1));
             path.Add(new PathStep("https://en.wikipedia.org/wiki/Calmodulin", (float)50.3, 2));
-            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
-            time, path);
-
             User racer = new User(1, "Trevor", "PAssword");
+            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
+            time, path, racer);
+
+            
             Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);
@@ -148,10 +153,11 @@ namespace Test.RepositoryTests
             List<PathStep> path = new List<PathStep>();
             path.Add(new PathStep("https://en.wikipedia.org/wiki/MARCKSL1", (float)25.2, 1));
             path.Add(new PathStep("https://en.wikipedia.org/wiki/Calmodulin", (float)50.3, 2));
-            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
-            time, path);
-
             User racer = new User(1, "Trevor", "PAssword");
+            LeaderboardLine newLine = new LeaderboardLine(1, 1, 1, 1000, (float)1001.3, 2,
+            time, path, racer);
+
+            
             Race race = new Race(1, 1, "trevsRace", "Timed", 10000, 4, "https://en.wikipedia.org/wiki/MARCKSL1", "https://en.wikipedia.org/wiki/Calmodulin");
             var userRepo = new UserRepository(context);
             await userRepo.AddUser(racer);

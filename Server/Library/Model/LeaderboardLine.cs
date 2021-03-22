@@ -19,7 +19,7 @@ namespace Library.Model
         }
 
         public LeaderboardLine(int id, int raceId, int userId, int score, float timeElapsed, int stepsTaken,
-            DateTime leaderBoardDateTime, List<PathStep> paths)
+            DateTime leaderBoardDateTime, List<PathStep> paths, User user)
         {
             Id = id;
             RaceId = raceId;
@@ -29,7 +29,7 @@ namespace Library.Model
             StepsTaken = stepsTaken;
             LeaderboardDateTime = leaderBoardDateTime;
             Path = paths;
-
+            User = user;
         }
 
 
@@ -88,7 +88,7 @@ namespace Library.Model
 
         public List<PathStep> Path { get; set; }
 
-
+        public User User { get; set; }
 
 
     }
