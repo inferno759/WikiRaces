@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   @Input() users? : User[] = [];
   @Input() currentUser? : User;
+  @Input() isRegister? : boolean = false;
 
   constructor(
     private userService: UserService,
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
     .subscribe(users => this.users = users);
   }
 
+
   getUserById() : void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserById(id)
@@ -41,9 +43,12 @@ export class LoginComponent implements OnInit {
     this.userService.getUserByUsername(username)
       .subscribe(user => this.currentUser = user);
   }
+  displayRegister() : void {
+    this.isRegister = true;
+  }
 
-  goBack(): void{
-    this.location.back();
+  goBackToLogin(): void{
+    this.isRegister = false;
   }
 
 }

@@ -9,6 +9,38 @@
     </div>
 </div>
 
+<div *ngIf="isRegister == false">
+  <form id= loginUser>
+    <label for= "usernameLogin"> Enter your Username</label>
+    <input type= "text" id="usernameLogin" placeholder="user">
+    <br>
+    <br>
+    <label for="passwordLogin">Enter your Password</label>
+    <input type= "text" id= "passwordLogin" placeholder= "password">
+    <br>
+    <button type="submit" id="loginSubmit">Submit</button>
+    
+    <button id= "newUser" (click)="displayRegister()"> New user? </button>
+  </form>
+</div>
+
+
+<div *ngIf= "isRegister == true" id= "registration">
+<form id= RegisterUser>
+  <label for= "usernameLogin"> Enter a Username</label>
+  <input type= "text" id="usernameLogin" placeholder="user">
+  <br>
+  <br>
+  <label for="passwordLogin">Enter a Password</label>
+  <input type= "text" id= "passwordLogin" placeholder= "password">
+  <br>
+  <button type="submit" id="loginSubmit">Register</button>
+  <br>
+  <br>
+  <button id= "goBackToLogin" (click)= "goBackToLogin()">Return to Login</button>
+</form>
+</div>
+
 
 
 <div *ngIf="users">
