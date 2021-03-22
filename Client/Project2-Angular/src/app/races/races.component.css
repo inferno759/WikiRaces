@@ -1,12 +1,14 @@
 *{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .races{
     list-style-type: none;
-    text-align: center;
-    margin-left: 600px;
-    width: 300px;
+    margin-left: -20px;
     font-size: large;
 }
 
@@ -28,9 +30,14 @@
     color: white;
 }
 
+form{
+    margin-top: 20px;
+    display:inline-block;
+}
+
 #search-box{
     background-color: white;
-    margin-top: 20px;
+    width: 200px;
 }
 
 #create-race{

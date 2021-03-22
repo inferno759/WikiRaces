@@ -2,8 +2,10 @@
 
     <h2>{{race.raceTitle | uppercase}}</h2>
 
-    <a id="play-button" routerLink="play">Play!</a>
-    <button id="back-button" (click)="goBack()">Go Back</button>
+    <div id="buttons">
+        <a id="play-button" routerLink="play">Play!</a>
+        <button id="back-button" (click)="goBack()">Go Back</button>
+    </div>
 </div>
 <h3><u>Leaderboard</u></h3>
 <div id="leaderboard" *ngIf="leaderboardLines">

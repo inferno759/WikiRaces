@@ -59,6 +59,7 @@ namespace WikiRacing
              .AllowAnyHeader()
              .AllowCredentials()));
 
+          
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -80,7 +81,7 @@ namespace WikiRacing
 
                     return allowed.Contains(userAddress);
                 }));
-            });
+            });*/
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -111,7 +112,7 @@ namespace WikiRacing
 
             app.UseCors();
             app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

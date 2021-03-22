@@ -3,18 +3,30 @@
       Create Race
     </h1>
     <form>
+      <div class="form-item">
         <label for="race-title">Race Title: </label>
         <input id="race-title" [(ngModel)]="race.raceTitle" autocomplete="off" name="title" placeholder="title" required/><br>
+      </div>
+      <div class="form-item">
         <label for="race-type">Race Type: </label>
         <input id="race-type" [(ngModel)]="race.raceType" autocomplete="off" name="type" placeholder="type" required/><br>
+      </div>
+      <div class="form-item">
         <label for="race-time">Time Limit: </label>
         <input id="race-time" [(ngModel)]="race.timeLimit" autocomplete="off" name="timelimit" placeholder=0 required/><br>
+      </div>
+      <div class="form-item">
         <label for="race-step">Step Limit: </label>
         <input id="race-step" [(ngModel)]="race.stepLimit" autocomplete="off" name="steplimit" placeholder=0 required/><br>
+      </div>
+      <div class="form-item">
         <label for="race-start">Start Page: </label>
         <input id="race-start" [(ngModel)]="race.startPage" autocomplete="off" name="start" placeholder="start" required/><br>
+      </div>
+      <div class="form-item">
         <label for="race-end">End Page: </label>
         <input id="race-end" [(ngModel)]="race.endPage" autocomplete="off" name="end" placeholder="end" required/><br>
-        <input type="submit" value="Create!" (click)="add()"/>
+      </div>
+        <input id="submit" type="submit" value="Create!" (click)="add()"/>
     </form>
 </div>
