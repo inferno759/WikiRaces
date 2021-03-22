@@ -12,14 +12,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
-using Data;
-using Data.Entities;
-using Library;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 
+using Data;
+using Data.Entities;
+using Library;
 using Library.Interfaces;
 using Data.Repositories;
+using App.Service;
 
 namespace WikiRacing
 {
@@ -46,6 +47,7 @@ namespace WikiRacing
             services.AddScoped<Library.Interfaces.IRaceRepository, Data.Repositories.RaceRepository>();
             services.AddScoped<Library.Interfaces.IUserRepository, Data.Repositories.UserRepository>();
             services.AddScoped<Library.Interfaces.ILeaderBoardLineRepository, Data.Repositories.LeaderboardLineRepository>();
+            services.AddScoped<App.Service.WebScraperService>();
 
             services.AddCors(options => options.AddDefaultPolicy(config => config
              .WithOrigins("http://localhost:4200", "https://team4-project2-client.azurewebsites.net", "http://team4-project2-client.azurewebsites.net")
