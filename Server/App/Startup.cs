@@ -57,7 +57,7 @@ namespace WikiRacing
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials()));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.Authority = "https://dev-50964723.okta.com/oauth2/default";
@@ -77,7 +77,7 @@ namespace WikiRacing
 
                     return allowed.Contains(userAddress);
                 }));
-            });
+            });*/
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
