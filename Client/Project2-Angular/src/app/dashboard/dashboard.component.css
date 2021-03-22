@@ -1,0 +1,38 @@
+*{
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+    text-align: center;
+    margin-left: 600px;
+    width: 300px;
+}
+
+li a{
+    display: block;
+    border-style: solid;
+    width: 300px;
+    margin: 5px;
+    background-color: #A5FFD6;
+}
+
+li a:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+li a:active{
+    background-color: black;
+    color: white;
+}
+
+.races-menu{
+    font-size: large;
+}
+
+#description{
+    width: 500px;
+    text-align: center;
+    margin-left: 550px;
+}
