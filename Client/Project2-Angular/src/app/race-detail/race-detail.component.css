@@ -1,4 +1,4 @@
-*{
+/* *{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,9 +11,16 @@
     flex-direction: row;
 }
 
+#leaderboard{
+    
+} */
+*{
+    text-align: center;
+}
+
 #leaderboard table{
     text-align: center;
-    /* margin-left: 600px; */
+    margin-left: 600px;
     width: 400px;
     font-size: large;
     counter-reset: rowNumber;
@@ -25,10 +32,19 @@
     content: counter(rowNumber);
 }
 
-#leaderboard table thead, #leaderboard table tbody{
+/* #leaderboard table thead, #leaderboard table tbody{
     display: flex;
     flex-direction: row;
 }
+
+#leaderboard table tbody tr{
+    display: flex;
+    flex-direction: row;
+}
+
+#leaderboard th, #leaderboard td{
+    margin: 10px;
+} */
 
 #play-button{
     text-decoration: none;
