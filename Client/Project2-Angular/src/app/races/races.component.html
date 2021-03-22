@@ -5,7 +5,7 @@
   <a id="create-race" routerLink="/races/add">Create a new Race</a>
     <form>
       <label for="search-box">Search Races: </label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
+      <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
     </form>
     <ul class="races">
         <li *ngFor="let race of races$ | async" routerLink="/races/detail/{{race.id}}">

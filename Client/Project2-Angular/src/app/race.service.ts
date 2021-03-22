@@ -9,7 +9,7 @@ import { Race } from './race';
   providedIn: 'root'
 })
 export class RaceService {
-  private racesUrl = 'https://team4-project2.azurewebsites.net/api/race';  // URL to web api
+  private racesUrl = `${location.origin}/api/race`;  // URL to web api 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
