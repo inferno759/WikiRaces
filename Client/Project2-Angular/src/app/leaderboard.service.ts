@@ -15,7 +15,12 @@ export class LeaderboardService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (location.origin.includes("localhost"))
+    {
+      this.leaderboardUrl = `${location.origin}/api/leaderboard`;
+    }
+  }
 
   getLeaderboardLinesByRaceId(raceId: number): Observable<LeaderboardLine[]> {
     return this.http.get<LeaderboardLine[]>(`${this.leaderboardUrl}/race/${raceId}`)

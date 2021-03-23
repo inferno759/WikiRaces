@@ -9,13 +9,18 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-private userUrl = 'https://team4-project2.azurewebsites.net/api/user';
+  private userUrl = 'https://team4-project2.azurewebsites.net/api/user';
 
-httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-};
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (location.origin.includes("localhost"))
+    {
+      this.userUrl = `${location.origin}/api/user`;
+    }
+  }
 
 
   getUsers(): Observable<User[]> {
