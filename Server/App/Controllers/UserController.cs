@@ -14,7 +14,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Newtonsoft.Json;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace App.Controllers
 {
@@ -34,7 +34,7 @@ namespace App.Controllers
             _tokenService = tokenService;
         }
 
-
+        
         [HttpGet("api/user")]
         public async Task<IActionResult> ControllerGetAllUsers()
         {
@@ -46,19 +46,12 @@ namespace App.Controllers
         [HttpGet("api/user/id/{userId}")]
         public async Task<IActionResult> ControllerGetUserById(int id)
         {
-
-
-           
-        }
-        
-
-
-
             var user = await _userRepository.GetUserByID(id);
             return Ok(user);
         }
         */
-
+        
+        [AllowAnonymous]
         [HttpGet("api/user/name/{username}")]
         public async Task<IActionResult> ControllerGetUserByUsername(string username)
         {
@@ -66,6 +59,8 @@ namespace App.Controllers
             return Ok(user);
         }
 
+        /*
+        
         [HttpPost("api/user")]
         public async Task<IActionResult> ControllerAddUser([Required] Library.Model.User user)
         {
@@ -73,7 +68,7 @@ namespace App.Controllers
             return Ok();
         }
 
-        /*[HttpGet("api/user")]
+        [HttpGet("api/user")]
         public async Task<IActionResult> ControllerCheckLogin(string username, string password)
         {
             bool userExists = await _userRepository.CheckUserInfoExists(username, password);

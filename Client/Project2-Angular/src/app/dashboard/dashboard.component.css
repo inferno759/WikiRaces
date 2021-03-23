@@ -1,19 +1,21 @@
 *{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 ul{
     list-style-type: none;
-    text-align: center;
-    margin-left: 600px;
-    width: 300px;
 }
 
 li a{
     display: block;
     border-style: solid;
     width: 300px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-left: -20px;
     background-color: #A5FFD6;
 }
 
@@ -33,6 +35,4 @@ li a:active{
 
 #description{
     width: 500px;
-    text-align: center;
-    margin-left: 550px;
 }
