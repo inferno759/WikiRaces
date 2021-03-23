@@ -7,10 +7,12 @@ import { RacesComponent } from './races/races.component';
 import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
 import { RaceAddComponent } from './race-add/race-add.component';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 
-
+const CALLBACK_PATH = 'login/callback';
 
 const routes: Routes = [
+  { path: CALLBACK_PATH, component: OktaCallbackComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
