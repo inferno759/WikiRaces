@@ -14,8 +14,8 @@ export class RaceAddComponent implements OnInit {
   @Input() race?: Race;
 
   constructor(
-    private raceService: RaceService,
-    private location: Location) { }
+    private raceService: RaceService
+    ) { }
 
   ngOnInit(): void {
     this.race = {
