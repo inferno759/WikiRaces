@@ -1,25 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RaceService } from '../race.service';
 
 import { RacesComponent } from './races.component';
 
 describe('RacesComponent', () => {
-  let component: RacesComponent;
-  let fixture: ComponentFixture<RacesComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ RacesComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RacesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
+    const fakehttp = {} as HttpClient;
+    const fakeservice = new RaceService(fakehttp);
+    const component = new RacesComponent(fakeservice);
     expect(component).toBeTruthy();
   });
 });

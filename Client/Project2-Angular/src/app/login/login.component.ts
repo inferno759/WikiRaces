@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 
+
 @Component({
   selector: 'app-login',
   template: `
@@ -14,6 +15,7 @@ import { OktaAuthService } from '@okta/okta-angular';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   isAuthenticated: boolean;
@@ -21,8 +23,6 @@ export class LoginComponent implements OnInit {
   @Input() users? : User[] = [];
   @Input() currentUser? : User;
   @Input() isRegister? : boolean = false;
-
-
 
 
   constructor(public oktaAuth: OktaAuthService,

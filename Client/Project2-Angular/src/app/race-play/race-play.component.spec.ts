@@ -1,25 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { RaceService } from '../race.service';
 
 import { RacePlayComponent } from './race-play.component';
 
 describe('RacePlayComponent', () => {
-  let component: RacePlayComponent;
-  let fixture: ComponentFixture<RacePlayComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ RacePlayComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RacePlayComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
+    const fakehttp = {} as HttpClient;
+    const fakeservice = new RaceService(fakehttp);
+    const fakeroute = {} as ActivatedRoute;
+    const component = new RacePlayComponent(fakeroute, fakeservice);
     expect(component).toBeTruthy();
   });
 });
