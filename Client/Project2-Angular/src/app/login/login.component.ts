@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.oktaAuth.signInWithRedirect({
-      originalUri: '/profile'
+      originalUri: './dashboard'
     });    
   }
 }

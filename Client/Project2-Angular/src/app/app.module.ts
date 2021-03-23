@@ -12,7 +12,9 @@ import { RaceDetailComponent } from './race-detail/race-detail.component';
 import { RacePlayComponent } from './race-play/race-play.component';
 import { RaceAddComponent } from './race-add/race-add.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
-import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+import { OKTA_CONFIG, OktaAuthModule,
+         OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+
 
 
 // Okta dynamic environment config
@@ -25,6 +27,7 @@ const config = {
   pkce: true
 };
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,13 +38,13 @@ const config = {
     RacePlayComponent,
     RaceAddComponent,
     LoginProfileComponent,
-    // OktaAuth
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    OktaAuthModule
   ],
   providers: [
     { provide: OKTA_CONFIG, useValue: config },
