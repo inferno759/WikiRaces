@@ -2,31 +2,100 @@
     <h1>
       Create Race
     </h1>
-    <form>
-      <div class="form-item">
-        <label for="race-title">Race Title: </label>
-        <input id="race-title" [(ngModel)]="race.raceTitle" autocomplete="off" name="title" placeholder="title" required/><br>
+    <form [formGroup]="raceForm" (ngSubmit)="add()">
+      <label>
+        Race Title:
+        <input type="text" formControlName="raceTitle" maxLength="100" required>
+      </label>
+      <div *ngIf="raceTitle.invalid && (raceTitle.dirty || raceTitle.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="raceTitle.errors.required">
+          Race Title is required.
+        </div>
+        <div *ngIf="raceTitle.errors.maxLength">
+          Race Title can't be more than 100 characters.
+        </div>
       </div>
-      <div class="form-item">
-        <label for="race-type">Race Type: </label>
-        <input id="race-type" [(ngModel)]="race.raceType" autocomplete="off" name="type" placeholder="type" required/><br>
+      <label>
+        Race Type:
+        <select formControlName="raceType" required>
+          <option value="Time Limit" selected>Time Limit</option>
+          <option value="Step Limit">Step Limit</option>
+        </select>
+      </label>
+      <div *ngIf="raceType.invalid && (raceType.dirty || raceType.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="raceType.errors.required">
+          Race type is required.
+        </div>
       </div>
-      <div class="form-item">
-        <label for="race-time">Time Limit: </label>
-        <input id="race-time" [(ngModel)]="race.timeLimit" autocomplete="off" name="timelimit" placeholder=0 min=0 required/><br>
+      <label>
+        Time Limit:
+        <input type="number" formControlName="timeLimit" min=0 max=1000000000 required>
+      </label>
+      <div *ngIf="timeLimit.invalid && (timeLimit.dirty || timeLimit.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="timeLimit.errors.required">
+          Time Limit is required.
+        </div>
+        <div *ngIf="timeLimit.errors.min">
+          Time Limit cannot be negative
+        </div>
+        <div *ngIf="timeLimit.errors.max">
+          Time Limit cannot be more than 1 billion seconds... Who would even play for that long?
+        </div>
       </div>
-      <div class="form-item">
-        <label for="race-step">Step Limit: </label>
-        <input id="race-step" [(ngModel)]="race.stepLimit" autocomplete="off" name="steplimit" placeholder=0 min=0 required/><br>
+      <label>
+        Step Limit:
+        <input type="number" formControlName="stepLimit" min=0 max=1000000000 required>
+      </label>
+      <div *ngIf="stepLimit.invalid && (stepLimit.dirty || stepLimit.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="stepLimit.errors.required">
+          Step Limit is required.
+        </div>
+        <div *ngIf="stepLimit.errors.min">
+          Step Limit cannot be negative
+        </div>
+        <div *ngIf="stepLimit.errors.max">
+          Step Limit cannot be more than 1 billion... Who would even play for that long?
+        </div>
       </div>
-      <div class="form-item">
-        <label for="race-start">Start Page: </label>
-        <input id="race-start" [(ngModel)]="race.startPage" autocomplete="off" name="start" placeholder="start" required/><br>
+      <label>
+        Start Page:
+        <input type="text" formControlName="startPage" pattern="^https:\/\/en\.wikipedia\.org\/wiki\/.+" required>
+      </label>
+      <div *ngIf="startPage.invalid && (startPage.dirty || startPage.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="startPage.errors.required">
+          Start Page is required.
+        </div>
+        <div *ngIf="startPage.errors.pattern">
+          Start Page doesn't match the correct url pattern.
+        </div>
       </div>
-      <div class="form-item">
-        <label for="race-end">End Page: </label>
-        <input id="race-end" [(ngModel)]="race.endPage" autocomplete="off" name="end" placeholder="end" required/><br>
+      <label>
+        End Page:
+        <input type="text" formControlName="endPage" pattern="^https:\/\/en\.wikipedia\.org\/wiki\/.+" required>
+      </label>
+      <div *ngIf="endPage.invalid && (endPage.dirty || endPage.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="endPage.errors.required">
+          End Page is required.
+        </div>
+        <div *ngIf="endPage.errors.pattern">
+          End Page doesn't match the correct url pattern.
+        </div>
       </div>
-        <input id="submit" type="submit" value="Create!" (click)="add()"/>
+      <div>
+        For start/end page enter with full url format 'https://en.wikipedia.org/wiki/####'
+      </div>
+      <button id="submit" type="submit" [disabled]="!raceForm.valid">Create!</button>
     </form>
 </div>
