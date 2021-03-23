@@ -61,10 +61,16 @@ namespace App.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("api/race/play")]
-        public async Task<ContentResult> ControllerPlayRaceStep(string current, string step)
+        [HttpGet("api/race/play/{raceId}/step")]
+        public async Task<ContentResult> ControllerPlayRaceStep(int raceId,string current, string step)
         {
+            var race = await _raceRepository.GetRaceByID(raceId);
             var page = await _webScraperService.Step(current, step);
+
+            if (step == race.EndPage && page != null)
+            {
+                return Content("Victory!");
+            }
             return Content(page);
         }
 

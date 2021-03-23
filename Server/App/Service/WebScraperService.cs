@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
 
 namespace App.Service
 {
@@ -24,7 +25,7 @@ namespace App.Service
 
         public async Task<string> Start(string url)
         {
-            var response =  await CallUrl(url);
+            var response =  await CallUrl("https://en.wikipedia.org" + url);
             var pageBody =  ParseHtml(url, response);
 
             return pageBody;
@@ -34,10 +35,11 @@ namespace App.Service
         {
             HashSet<string> validSteps;
             string actual;
+            
             if (validationCache.TryGetValue(current, out validSteps) && validSteps.TryGetValue(step, out actual))
             {
-                var response = await CallUrl(step);
-                var pageBody = ParseHtml(step, response);
+                var response = await CallUrl("https://en.wikipedia.org" + actual);
+                var pageBody = ParseHtml(actual, response);
 
                 return pageBody;
             }
@@ -64,10 +66,18 @@ namespace App.Service
 
             foreach(var link in htmlLinks)
             {
-                wikiLinks.Add(link.GetAttributeValue("href", null));
+                string href = link.GetAttributeValue("href", null);
+                if (href != null)
+                {
+                    Regex pattern = new Regex(@"^\/wiki\/.+");
+                    if (pattern.IsMatch(href))
+                    {
+                        wikiLinks.Add(href);
+                    }
+                }
             }
-
             validationCache.AddOrUpdate(url, key => wikiLinks, (key, value) => wikiLinks);
+            
 
             return htmlBody.OuterHtml;
         }

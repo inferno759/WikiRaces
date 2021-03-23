@@ -78,8 +78,15 @@ export class RaceService {
   }
 
   /* GET race next page content from server by user selection */
-  stepRace() {
-    
+  stepRace(race: Race, current: string, step: string) {
+    return this.http.get(`${this.racesUrl}/play/${race.id}/step?current=${current}&step=${step}`, {
+      responseType: 'text'
+    }).pipe(
+      tap(body => body ? 
+        this.log(`stepping from page "${current}" to page "${step}"`) :
+        this.log(`step attempt from page "${current}" to page "${step}" failed`)),
+      catchError(this.handleError<string>('stepRace', `${current}; ${step}`))
+    );
   }
 
 
