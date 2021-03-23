@@ -19,7 +19,7 @@ namespace Library.Model
             get { return _currentPage; }
             set
             {
-                Regex pattern = new Regex(@"^https:\/\/en\.wikipedia\.org\/wiki\/.+");
+                Regex pattern = new Regex(@"^\/wiki\/.+");
                 if (pattern.IsMatch(value))
                 {
                     _currentPage = value;
