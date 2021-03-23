@@ -110,7 +110,7 @@ namespace Library.Model
             set
             {
                 Regex pattern = new Regex(@"^\/wiki\/.+");
-                if (pattern.IsMatch(value))
+                if (pattern.IsMatch(value) && value != StartPage)
                 {
                     _endPage = value;
                 }

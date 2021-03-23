@@ -93,9 +93,10 @@
           End Page doesn't match the correct url pattern.
         </div>
       </div>
+      <div *ngIf="startPage.value == endPage.value">Start page and end page cannot be the same</div>
       <div>
         For start/end page enter with full url format 'https://en.wikipedia.org/wiki/####'
       </div>
-      <button id="submit" type="submit" [disabled]="!raceForm.valid">Create!</button>
+      <button id="submit" type="submit" [disabled]="!raceForm.valid || startPage.value == endPage.value">Create!</button>
     </form>
 </div>
