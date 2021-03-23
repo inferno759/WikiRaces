@@ -15,12 +15,14 @@ import { RaceAddComponent } from './race-add/race-add.component';
 import { LoginProfileComponent } from './login-profile/login-profile.component';
 import { OKTA_CONFIG, OktaAuthModule,
          OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { RouterModule } from '@angular/router';
+import { OktaConfig } from '@okta/okta-angular';
 
 
 
 // Okta dynamic environment config
 
-const config = {
+const config: OktaConfig = {
   clientId: '0oacai6gk38wXie3v5d6',
   issuer: 'https://dev-50964723.okta.com/oauth2/default',
   redirectUri: 'http://team4-project2-client.azurewebsites.net/dashboard',

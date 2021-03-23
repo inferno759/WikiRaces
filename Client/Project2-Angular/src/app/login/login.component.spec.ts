@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 
 import { LoginComponent } from './login.component';
 
+/*
 describe('LoginComponent', () => {
 
   // it('should create', () => {
@@ -16,3 +17,5 @@ describe('LoginComponent', () => {
   //   expect(component).toBeTruthy();
   // });
 });
+
+*/

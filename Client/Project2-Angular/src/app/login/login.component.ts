@@ -9,9 +9,7 @@ import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <button *ngIf= "!isAuthenticated" (click)="login()"> Login </button>
-    `,
+  //template: `<button *ngIf= "!isAuthenticated" (click)="login()"> Login </button>`,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -36,13 +34,25 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    if( this.isAuthenticated == false)
+    {
+      await this.oktaAuth.isAuthenticated();
+    }
+    else
+    {
+      this.logout();
+    } 
+    
   }
 
   login() {
     this.oktaAuth.signInWithRedirect({
       originalUri: './dashboard'
     });    
+  }
+  
+  logout() {
+    this.oktaAuth.signOut();
   }
 }
 
