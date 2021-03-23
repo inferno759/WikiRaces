@@ -13,11 +13,11 @@
       </div>
       <div class="form-item">
         <label for="race-time">Time Limit: </label>
-        <input id="race-time" [(ngModel)]="race.timeLimit" autocomplete="off" name="timelimit" placeholder=0 required/><br>
+        <input id="race-time" [(ngModel)]="race.timeLimit" autocomplete="off" name="timelimit" placeholder=0 min=0 required/><br>
       </div>
       <div class="form-item">
         <label for="race-step">Step Limit: </label>
-        <input id="race-step" [(ngModel)]="race.stepLimit" autocomplete="off" name="steplimit" placeholder=0 required/><br>
+        <input id="race-step" [(ngModel)]="race.stepLimit" autocomplete="off" name="steplimit" placeholder=0 min=0 required/><br>
       </div>
       <div class="form-item">
         <label for="race-start">Start Page: </label>

@@ -4,28 +4,50 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { OktaAuthService } from '@okta/okta-angular';
+
 
 @Component({
   selector: 'app-login',
+  template: `
+    <button *ngIf= "!isAuthenticated" (click)="login()"> Login </button>
+    `,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
+
+  isAuthenticated: boolean;
 
   @Input() users? : User[] = [];
   @Input() currentUser? : User;
   @Input() isRegister? : boolean = false;
 
-  constructor(
-    private userService: UserService,
-    private route: ActivatedRoute,
-    private location: Location
-    ) { }
 
-  ngOnInit(): void {
-    this.getUsers();
-    this.getUserById();
+  constructor(public oktaAuth: OktaAuthService,
+      private userService: UserService,
+      private route: ActivatedRoute,
+      private location: Location) {
+    // Subscribe to authentication state changes
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean) => this.isAuthenticated = isAuthenticated
+    );
   }
+
+  async ngOnInit() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+  }
+
+  login() {
+    this.oktaAuth.signInWithRedirect({
+      originalUri: './dashboard'
+    });    
+  }
+}
+
+
+/*
 
   getUsers() : void {
     this.userService.getUsers()
@@ -50,5 +72,4 @@ export class LoginComponent implements OnInit {
   goBackToLogin(): void{
     this.isRegister = false;
   }
-
-}
+*/

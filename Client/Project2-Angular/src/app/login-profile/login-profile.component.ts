@@ -19,9 +19,7 @@ export class LoginProfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService,
-    private location: Location
-  ) { }
+    private userService: UserService  ) { }
 
   ngOnInit(): void {
     this.getUsers();
