@@ -12,13 +12,13 @@ using System.Text;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System.Net;
-
+using System.Collections.Concurrent;
 
 namespace App.Service
 {
     public class WebScraperService
     {
-        private static Dictionary<string, HashSet<string>> validationCache = new Dictionary<string, HashSet<string>>();
+        private static ConcurrentDictionary<string, HashSet<string>> validationCache = new ConcurrentDictionary<string, HashSet<string>>();
 
 
 
@@ -67,7 +67,7 @@ namespace App.Service
                 wikiLinks.Add(link.GetAttributeValue("href", null));
             }
 
-            validationCache.Add(url, wikiLinks);
+            validationCache.AddOrUpdate(url, key => wikiLinks, (key, value) => wikiLinks);
 
             return htmlBody.OuterHtml;
         }

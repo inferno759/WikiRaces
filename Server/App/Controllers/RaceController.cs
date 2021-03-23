@@ -50,18 +50,18 @@ namespace App.Controllers
         }
 
         [HttpGet("api/race/play/{raceId}")]
-        public async Task<IActionResult> ControllerPlayRace(int raceId)
+        public async Task<ContentResult> ControllerPlayRace(int raceId)
         {
             var race = await _raceRepository.GetRaceByID(raceId);
             var page = await _webScraperService.Start(race.StartPage);
-            return Ok();
+            return Content(page, "text/html");
         }
 
         [HttpGet("api/race/play")]
-        public async Task<IActionResult> ControllerPlayRaceStep(string current, string step)
+        public async Task<ContentResult> ControllerPlayRaceStep(string current, string step)
         {
             var page = await _webScraperService.Step(current, step);
-            return Ok();
+            return Content(page);
         }
 
         [HttpPost("api/race")]

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Race } from '../race';
-import { LeaderboardLine } from '../leaderboardLine';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { Race } from '../race';
+import { LeaderboardLine } from '../leaderboardLine';
 import { RaceService } from '../race.service';
 import { LeaderboardService } from '../leaderboard.service';
 

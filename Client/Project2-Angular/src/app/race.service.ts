@@ -58,6 +58,25 @@ export class RaceService {
     );
   }
 
+
+  /* GET race start page content from server by race id */
+  playRace(race: Race) {
+    return this.http.get(`${this.racesUrl}/play/${race.id}`, {
+      responseType: 'text'
+    }).pipe(
+      tap(body => body ? 
+        this.log(`starting race with id ${race.id}`) :
+        this.log(`no race with id ${race.id}`)),
+      catchError(this.handleError<string>('playRace', `${race.id}`))
+    );
+  }
+
+  /* GET race next page content from server by user selection */
+  stepRace() {
+    
+  }
+
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -80,6 +99,7 @@ export class RaceService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
+    console.info(message);
     //this.messageService.add(`HeroService: ${message}`);
   }
 }
