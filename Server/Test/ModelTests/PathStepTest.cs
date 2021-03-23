@@ -11,13 +11,13 @@ namespace Test
         [Fact]
         public void PathStepConstructorPassed()
         {
-            string page = "https://en.wikipedia.org/wiki/Elvis_Presley";
+            string page = "/wiki/Elvis_Presley";
             float time = 12345;
             int stepnumber = 2;
 
             PathStep pathstep = new PathStep(page, time, stepnumber);
 
-            Assert.Equal("https://en.wikipedia.org/wiki/Elvis_Presley", pathstep.CurrentPage);
+            Assert.Equal("/wiki/Elvis_Presley", pathstep.CurrentPage);
             Assert.Equal(12345, pathstep.TimeSpent);
             Assert.Equal(2, pathstep.StepNumber);
         }

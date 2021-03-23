@@ -26,8 +26,8 @@ namespace Test.RepositoryTests
             string type = "Timed";
             float timeLimit = 1000;
             int stepLimit = 4;
-            string start = "https://en.wikipedia.org/wiki/Elvis_Presley";
-            string end = "https://en.wikipedia.org/wiki/Russia";
+            string start = "/wiki/Elvis_Presley";
+            string end = "/wiki/Russia";
 
             Race insertedRace = new Race(id, authorId, title, type, timeLimit, stepLimit, start, end );
 
@@ -63,8 +63,8 @@ namespace Test.RepositoryTests
             string type = "Timed";
             float timeLimit = 1000;
             int stepLimit = 4;
-            string start = "https://en.wikipedia.org/wiki/Elvis_Presley";
-            string end = "https://en.wikipedia.org/wiki/Russia";
+            string start = "/wiki/Elvis_Presley";
+            string end = "/wiki/Russia";
 
             Race insertedRace = new Race(id, authorId, title, type, timeLimit, stepLimit, start, end);
 
@@ -100,8 +100,8 @@ namespace Test.RepositoryTests
             string type = "Timed";
             float timeLimit = 1000;
             int stepLimit = 4;
-            string start = "https://en.wikipedia.org/wiki/Elvis_Presley";
-            string end = "https://en.wikipedia.org/wiki/Russia";
+            string start = "/wiki/Elvis_Presley";
+            string end = "/wiki/Russia";
 
             Race insertedRace = new Race(id, authorId, title, type, timeLimit, stepLimit, start, end);
 

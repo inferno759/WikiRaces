@@ -92,7 +92,7 @@ namespace Library.Model
             get { return _startPage; }
             set
             {
-                Regex pattern = new Regex(@"^https:\/\/en\.wikipedia\.org\/wiki\/.+");
+                Regex pattern = new Regex(@"^\/wiki\/.+");
                 if (pattern.IsMatch(value))
                 {
                     _startPage = value;
@@ -109,8 +109,8 @@ namespace Library.Model
             get { return _endPage; }
             set
             {
-                Regex pattern = new Regex(@"^https:\/\/en\.wikipedia\.org\/wiki\/.+");
-                if (pattern.IsMatch(value))
+                Regex pattern = new Regex(@"^\/wiki\/.+");
+                if (pattern.IsMatch(value) && value != StartPage)
                 {
                     _endPage = value;
                 }

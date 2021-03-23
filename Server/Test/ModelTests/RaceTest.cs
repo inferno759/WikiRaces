@@ -16,8 +16,8 @@ namespace Test
             string type = "Timed";
             float timeLimit = 1000;
             int stepLimit = 4;
-            string start = "https://en.wikipedia.org/wiki/Elvis_Presley";
-            string end = "https://en.wikipedia.org/wiki/Russia";
+            string start = "/wiki/Elvis_Presley";
+            string end = "/wiki/Russia";
 
             Race race = new Race(id, authorId, title, type, timeLimit, stepLimit, start, end);
 
@@ -27,8 +27,8 @@ namespace Test
             Assert.Equal("Timed", race.RaceType);
             Assert.Equal(1000, race.TimeLimit);
             Assert.Equal(4, race.StepLimit);
-            Assert.Equal("https://en.wikipedia.org/wiki/Elvis_Presley", race.StartPage);
-            Assert.Equal("https://en.wikipedia.org/wiki/Russia", race.EndPage);
+            Assert.Equal("/wiki/Elvis_Presley", race.StartPage);
+            Assert.Equal("/wiki/Russia", race.EndPage);
         }
 
         [Fact]

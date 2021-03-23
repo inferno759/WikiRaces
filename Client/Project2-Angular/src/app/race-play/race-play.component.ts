@@ -14,7 +14,7 @@ export class RacePlayComponent implements OnInit {
   @Input() race? : Race;
   pageBody: string;
 
-  currentURL: SafeUrl;
+  currentURL: string;
   randomURL = "https://en.wikipedia.org/wiki/Russia";
 
   constructor(
@@ -28,13 +28,26 @@ export class RacePlayComponent implements OnInit {
       .subscribe(race => {
         this.race = race;
         this.currentURL = this.race.startPage;
-        let result = this.raceService.playRace(this.race);
-        result.subscribe(pageBody => this.pageBody = pageBody);
+        this.raceService.playRace(this.race)
+          .subscribe(pageBody => this.pageBody = pageBody);
       });
   }
 
-  onClick() {
-    console.info("User clicked!");
+  onClick(event: Event) {
+    event.preventDefault();
+    var target = event.target as HTMLElement;
+    var href = target.attributes["href"];
+
+    if (href)
+    {
+      this.raceService.stepRace(this.race, this.currentURL, href.value)
+        .subscribe(pageBody => {
+          if (pageBody != "") {
+            this.currentURL = href.value;
+            this.pageBody = pageBody;
+          }
+        });
+    }
   }
 
 }

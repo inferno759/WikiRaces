@@ -25,7 +25,7 @@ namespace Test
             List<PathStep> paths = new List<PathStep>();
             paths.Add(new PathStep() 
             {
-                CurrentPage = "https://en.wikipedia.org/wiki/O_Captain!_My_Captain!",
+                CurrentPage = "/wiki/O_Captain!_My_Captain!",
                 TimeSpent = 5, 
                 StepNumber = 3
             });
