@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Location } from '@angular/common';
 
@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'Wiki Races';
   isAuthenticated: boolean;
   baseUri: string;
+  user? : string;
 
   constructor(public oktaAuth: OktaAuthService) {
     this.oktaAuth.$authenticationState.subscribe(
@@ -22,6 +23,8 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
       this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+      const userClaims = await this.oktaAuth.getUser();
+      this.user = userClaims.name;
     /*
     this.oktaAuth.isAuthenticated().then((auth) => {
       this.isAuthenticated = auth;

@@ -10,6 +10,10 @@
       <li>
         <a routerLink="/login">Login</a>
       </li>
+      <li *ngIf="user">
+        {{user.username}}
+        
+      </li>
     </ul>
   </nav>
 </div>
