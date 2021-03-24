@@ -44,8 +44,10 @@ export class RaceAddComponent implements OnInit {
     this.race.raceType = this.raceForm.value.raceType;
     this.race.timeLimit = this.raceForm.value.timeLimit;
     this.race.stepLimit = this.raceForm.value.stepLimit;
-    this.race.startPage = this.raceForm.value.startPage;
-    this.race.endPage = this.raceForm.value.endPage;
+    let start = this.raceForm.value.startPage.match('\/wiki\/.+')[0];
+    let end = this.raceForm.value.endPage.match('\/wiki\/.+')[0];
+    this.race.startPage = start;
+    this.race.endPage = end;
     console.info(this.race);
     this.raceService.addRace(this.race);
   }
