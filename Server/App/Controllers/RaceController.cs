@@ -74,7 +74,7 @@ namespace App.Controllers
             return Content(page);
         }
 
-        
+        [AllowAnonymous]
         [HttpPost("api/race")]
         public async Task<IActionResult> ControllerAddRace([Required] Race race)
         {
