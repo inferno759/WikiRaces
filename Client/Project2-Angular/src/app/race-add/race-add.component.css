@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.form-item{
+form label{
     display: flex;
     flex-direction: row;
     margin: 10px;
@@ -16,6 +16,7 @@
     background-color: green;
     color: white;
     padding: 8px;
+    margin-top: 10px;
 }
 
 #submit:hover{
@@ -23,6 +24,21 @@
     color: white;
 }
 
+#submit:hover:disabled{
+    background-color: red;
+}
+
 #submit:active{
     margin-top: 2px;
+}
+
+.alert{
+    color: red;
+    font-weight: bold;
+}
+
+#successMessage{
+    font-weight: bold;
+    margin-top: 10px;
+    color: limegreen;
 }

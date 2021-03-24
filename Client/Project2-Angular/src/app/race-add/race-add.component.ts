@@ -21,6 +21,7 @@ export class RaceAddComponent implements OnInit {
     startPage: new FormControl(''),
     endPage: new FormControl(''),
   });
+  successMessage: string;
 
   constructor(
     private raceService: RaceService
@@ -50,7 +51,7 @@ export class RaceAddComponent implements OnInit {
     this.race.endPage = end;
     console.info(this.race);
     this.raceService.addRace(this.race)
-    .subscribe(() => console.log('Added race!'));
+    .subscribe(() => this.successMessage = 'Race added!');
   }
 
   get raceTitle() { return this.raceForm.get('raceTitle'); }
