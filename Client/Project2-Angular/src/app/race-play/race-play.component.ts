@@ -4,6 +4,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { Race } from '../race';
 import { RaceService } from '../race.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-race-play',
@@ -13,6 +14,7 @@ import { RaceService } from '../race.service';
 export class RacePlayComponent implements OnInit {
   @Input() race? : Race;
   pageBody: string;
+  victory: string;
 
   currentURL: any;
   randomURL = "https://en.wikipedia.org/wiki/Russia";
@@ -42,7 +44,10 @@ export class RacePlayComponent implements OnInit {
     {
       this.raceService.stepRace(this.race, this.currentURL, href.value)
         .subscribe(pageBody => {
-          if (pageBody != "") {
+          if (pageBody == "Victory!") {
+            this.victory = "You won!";
+          }
+          else if(pageBody != ""){
             this.currentURL = href.value;
             this.pageBody = pageBody;
           }

@@ -1,0 +1,11 @@
+#victory{
+    font-size: 90px;
+    font-weight: bold;
+    color: limegreen;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}

@@ -1,7 +1,8 @@
-<h1 id="article-title">Article: {{currentURL.substring(6).replaceAll('_', ' ')}}</h1>
-<div (click)="onClick($event)" [innerHTML]="pageBody">
+<h1 id="article-title" *ngIf="!victory">Article: {{currentURL.substring(6).replaceAll('_', ' ')}}</h1>
+<div (click)="onClick($event)" [innerHTML]="pageBody" *ngIf="!victory">
     
 </div>
+<div id="victory" *ngIf="victory">{{victory}}</div>
 
 <!--
 <div *ngIf= "race">
