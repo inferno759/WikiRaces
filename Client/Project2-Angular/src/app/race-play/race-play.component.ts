@@ -14,7 +14,7 @@ export class RacePlayComponent implements OnInit {
   @Input() race? : Race;
   pageBody: string;
 
-  currentURL: string;
+  currentURL: any;
   randomURL = "https://en.wikipedia.org/wiki/Russia";
 
   constructor(

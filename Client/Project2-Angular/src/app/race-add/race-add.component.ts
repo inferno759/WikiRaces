@@ -49,7 +49,8 @@ export class RaceAddComponent implements OnInit {
     this.race.startPage = start;
     this.race.endPage = end;
     console.info(this.race);
-    this.raceService.addRace(this.race);
+    this.raceService.addRace(this.race)
+    .subscribe(() => console.log('Added race!'));
   }
 
   get raceTitle() { return this.raceForm.get('raceTitle'); }
