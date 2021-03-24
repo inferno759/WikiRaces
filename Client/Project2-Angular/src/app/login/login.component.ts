@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
+import { UserClaims } from '@okta/okta-auth-js';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   isAuthenticated: boolean;
 
+  user: UserClaims | null = null;
   @Input() users? : User[] = [];
   @Input() currentUser? : User;
   @Input() isRegister? : boolean = false;
@@ -33,15 +35,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  async ngOnInit() {
-    if( this.isAuthenticated == false)
-    {
-      await this.oktaAuth.isAuthenticated();
-    }
-    else
-    {
-      this.logout();
-    } 
+  ngOnInit(): void {
+    this.oktaAuth.getUser().then((user) => {
+      this.user = user;
+    });
     
   }
 
