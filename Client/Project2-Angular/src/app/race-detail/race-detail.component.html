@@ -1,7 +1,7 @@
 <div *ngIf="race">
 
     <h2>{{race.raceTitle | uppercase}}</h2>
-
+    <h3 id="route">FROM: {{race.startPage.substring(6).replaceAll('_', ' ')}}    TO: {{race.endPage.substring(6).replaceAll('_', ' ')}}</h3>
     <div id="buttons">
         <a id="play-button" routerLink="play">Play!</a>
         <button id="back-button" (click)="goBack()">Go Back</button>
