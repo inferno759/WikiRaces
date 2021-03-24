@@ -9,11 +9,11 @@
 </div>
 <h3><u>Leaderboard</u></h3>
 <div id="leaderboard" *ngIf="leaderboardLines">
-    <table>
+    <table aria-labelledby="h3">
         <thead>
-            <th>Rank</th>
-            <th>Username</th>
-            <th>Score</th>
+            <th id= "head1">Rank</th>
+            <th id= "head2">Username</th>
+            <th id= "head3">Score</th>
         </thead>
         <tbody>
             <tr *ngFor="let line of leaderboardLines">
