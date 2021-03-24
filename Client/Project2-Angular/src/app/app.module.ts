@@ -25,7 +25,7 @@ import { OktaConfig } from '@okta/okta-angular';
 const config: OktaConfig = {
   clientId: '0oacai6gk38wXie3v5d6',
   issuer: 'https://dev-50964723.okta.com/oauth2/default',
-  redirectUri: 'https://team4-project2-client.azurewebsites.net/dashboard',
+  redirectUri: `${location.origin}/dashboard`,
   scopes: ['openid', 'profile', 'email'],
   pkce: true
 };
