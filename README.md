@@ -2,8 +2,10 @@
 
 written by: Brandon Faulkenberry, Caleb Owens, and Trevor Dunbar
 
-## Project Overview:
-
+## Project Overview: Wiki Races
+Wiki Races is an Angular web application designed to have users play the game, 'wiki racing'.
+Wiki racing involves a player starting at one Wikipedia.org page and, through using links in the page,
+navigate to a desired end wikipedia page. For example, 
 
 
 ## Languages and Technologies used:
