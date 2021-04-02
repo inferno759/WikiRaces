@@ -44,7 +44,7 @@ To-Do items:
 
 ## Getting Started:
 
-use git clone on the 'Server' and 'Client' files. 
+use git clone on the 'Server' and 'Client' projects. 
 
 
 ## Usage: 
